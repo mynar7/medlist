@@ -6,7 +6,7 @@ const leetest2 = [11289,17472]
 const leetest3 = [11289,32968,704,36437]
 // Test calls ******************
 //   ge/tDrugValue('sertraline')
-getInteractions(drugNoInter);
+getInteractions(drugInter).then((results) => console.log(results));
 
 // this checks for the drug name (including generic names) and retrieves rxNumber 
 // - if it doesn't exist in the database, it throws an error
@@ -26,6 +26,7 @@ function getDrugValue(name) {
 
 //A maximum of 50 identifiers is allowed
 function getInteractions(listArray) { // expects listArray to be an array
+    return new Promise((resolve, reject) => {
     const baseURL = 'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis='
     // TODO: validate array
     let listString = listArray[0];
@@ -36,7 +37,7 @@ function getInteractions(listArray) { // expects listArray to be an array
     $.get(queryString)
         .then(res => {
             let interactionsArray = [];
-            if (typeof res.data.fullInteractionTypeGroup != 'undefined') {
+            if (res.data.fullInteractionTypeGroup) {
                 for (var i = 0; i < res.data.fullInteractionTypeGroup.length; i++) {
                     for (var j = 0; j < res.data.fullInteractionTypeGroup[i].fullInteractionType.length; j++) {
                         for (var k = 0; k < res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair.length; k++) {
@@ -47,10 +48,11 @@ function getInteractions(listArray) { // expects listArray to be an array
             } else {
                 interactionsArray.push('no interactions found')
             }
-            console.log(interactionsArray)
+            resolve(interactionsArray);
         })
         .catch(error => {
             //unsuccesful - declare error
-            console.log(error)
+            reject(error);
         });
+    })
 }
