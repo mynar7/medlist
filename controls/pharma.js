@@ -109,9 +109,4 @@ pharma = {
 
 }//end obj
 
-// pharma.getInteractions.bind(pharma);
-// pharma.getRxNorm.bind(pharma);
-// pharma.searchFDA.bind(pharma);
-// pharma.getAllRxNorms.bind(pharma);
-
 module.exports = pharma;
