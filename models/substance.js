@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Substance.associate = function(models) {
     Substance.belongsTo(models.Med);
+    Substance.belongsTo(models.User);
   };
   return Substance;
 };
