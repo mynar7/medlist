@@ -33,6 +33,15 @@ pharma = {
         });
     },
 
+    getAllRxNorms: function(nameArr) {
+        return new Promise((resolve, reject) => {
+            let promiseArr = nameArr.map(name => this.getRxNorm(name))
+            Promise.all(promiseArr)
+            .then(results => resolve(results))
+            .catch(err => reject({error: "RxNorm IDs not found"}))
+        });
+    },  
+
     //A maximum of 50 identifiers is allowed
     getInteractions: function (listArray) { // expects listArray to be an array
         return new Promise((resolve, reject) => {
@@ -99,5 +108,10 @@ pharma = {
     }
 
 }//end obj
+
+// pharma.getInteractions.bind(pharma);
+// pharma.getRxNorm.bind(pharma);
+// pharma.searchFDA.bind(pharma);
+// pharma.getAllRxNorms.bind(pharma);
 
 module.exports = pharma;

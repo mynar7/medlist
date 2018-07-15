@@ -20,6 +20,15 @@ router.get('/rxnorm/:med', (req, res) => {
         .catch(err => res.json(err));
 });
 
+router.get('/rxnorms/:meds', (req, res) => {
+    let meds = req.params.meds.split("+");
+    pharma.getAllRxNorms(meds)
+    //debug .then to give interactions off of rxnorm_ids
+    // .then(result => pharma.getInteractions(result.map(x => x.rxnorm_id)))
+    .then(result => res.json(result) )
+    .catch(err => res.json(err) );
+});
+
 router.get('/medsearch/:med', (req, res) => {
     pharma.searchFDA(req.params.med)
         .then(result => res.json(result))
