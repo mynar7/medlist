@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     note: DataTypes.STRING
   }, {});
   Dose_Time.associate = function(models) {
-    Dose_Time.belongsTo(models.Med);
-    Dose_Time.belongsTo(models.User);
+    Dose_Time.belongsTo(models.Med, {onDelete: 'CASCADE'});
+    //Dose_Time.belongsTo(models.User);//, {onDelete: 'CASCADE'});
   };
   return Dose_Time;
 };

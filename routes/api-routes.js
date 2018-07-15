@@ -34,6 +34,7 @@ router.get('/rxnorms/:meds', (req, res) => {
 });
 
 //find med in FDA db
+
 // ADD BACK IN CHECKAUTH
 router.get('/searchMed/:med', (req, res) => {
     pharma.searchFDA(req.params.med)
@@ -41,10 +42,75 @@ router.get('/searchMed/:med', (req, res) => {
         .catch(err => res.json(err));
 });
 
-//get all user's meds
+//delete user
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.delete('/removeuser', (req, res) => {
+    db.User.destroy({
+        where: {
+            id: process.env.TEST_ID, //req.user.id,
+        }
+    })
+    .then(result => res.json(result))
+    .catch(err => res.json(err));
+})
+
+//get one med
+
 //joined substances for contents of med
+//joined dose_times for dosages
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.get('/med/:medId', (req, res) => {
+    db.Med.findOne({
+        where: {
+            UserId: process.env.TEST_ID, //req.user.id,
+            id: req.params.medId
+        },
+        include: [
+            {
+                model: db.Substance,
+                as: "substances"
+            },
+            {
+                model: db.Dose_Time,
+                as: "dose_times"
+            }
+        ]
+    }).then(results => res.json(results))
+    .catch(err => res.json(err));
+});
+
+//delete one med
+
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.delete('/med/:medId', (req, res) => {
+    db.Med.destroy({
+        where: {
+            UserId: process.env.TEST_ID, //req.user.id,
+            id: req.params.medId
+        }
+    }).then(results => res.json(results))
+    .catch(err => res.json(err));
+});
+
+
+//get all meds without doses
+
 // ADD BACK IN CHECKAUTH AND REQ.USER.ID
 router.get('/allMeds', (req, res) => {
+    db.Med.findAll({
+        where: {
+            UserId: process.env.TEST_ID, //req.user.id,
+        }
+    }).then(results => res.json(results))
+    .catch(err => res.json(err));
+});
+
+//get all user's meds
+
+//joined substances for contents of med
+//joined dose_times for dosages
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.get('/allMeds/more', (req, res) => {
     db.Med.findAll({
         where: {
             UserId: process.env.TEST_ID, //req.user.id,
@@ -61,9 +127,10 @@ router.get('/allMeds', (req, res) => {
         ]
     }).then(results => res.json(results))
     .catch(err => res.json(err));
-})
+});
 
 //get interactions
+
 // ADD BACK IN CHECKAUTH AND REQ.USER.ID
 router.get('/interactions', (req, res) => {
     db.Substance.findAll({
@@ -76,7 +143,7 @@ router.get('/interactions', (req, res) => {
         return pharma.getInteractions(rxnorm_ids);
     }).then(results => res.json(results))
     .catch(err => res.json(err));
-})
+});
 
 //add a med 
 // ADD BACK IN CHECKAUTH AND REQ.USER.ID
@@ -105,7 +172,7 @@ router.post('/addMed', (req, res) => {
                 MedId: result[1].id,
                 UserId: process.env.TEST_ID, //req.user.id,
             });
-        })
+        });
         //bulk insert those substances into db under added med's ID
         //return "db.Substance.bulkCreate(bulkSubstances)" also works,
         //but will only return result of bulkInsert, and not previous result
@@ -133,6 +200,18 @@ router.post('/addDose/:medId', (req, res) => {
     .catch(err => res.json(err));
 });
 
+//delete one dose/time
+
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.delete('/dose/:doseId', (req, res) => {
+    db.Dose_Time.destroy({
+        where: {
+            UserId: process.env.TEST_ID, //req.user.id,
+            id: req.params.doseId
+        }
+    }).then(results => res.json(results))
+    .catch(err => res.json(err));
+});
 
 //get a schedule
 // ADD BACK IN CHECKAUTH AND REQ.USER.ID

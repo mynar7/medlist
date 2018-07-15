@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     brand_name: DataTypes.STRING
   }, {});
   Med.associate = function(models) {
-    Med.belongsTo(models.User);
+    Med.belongsTo(models.User);//, {onDelete: "CASCADE"});
     Med.hasMany(models.Substance, {as: "substances", onDelete: "CASCADE"});
     Med.hasMany(models.Dose_Time, {as: "dose_times", onDelete: "CASCADE"});
   };
