@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Med.associate = function(models) {
     Med.belongsTo(models.User);
-    Med.hasMany(models.RxNorm, {as: "rxnorms", onDelete: "CASCADE"});
     Med.hasMany(models.Substance, {as: "substances", onDelete: "CASCADE"});
     Med.hasMany(models.Dose_Time, {as: "dose_times", onDelete: "CASCADE"});
   };
