@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     User.hasMany(models.Med, {as: 'meds', onDelete: 'CASCADE'});
+    User.hasMany(models.Substance, {as: 'substances', onDelete: 'CASCADE'});
+    User.hasMany(models.Dose_Time, {as: 'dose_times', onDelete: 'CASCADE'});
   };
   return User;
 };

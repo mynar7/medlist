@@ -18,8 +18,9 @@ pharma = {
             .then(res => {
                 let drugValue;
                 if(res.data.idGroup.rxnormId) {
-                    drugValue = res.data.idGroup.rxnormId[0]
+                    drugValue = res.data.idGroup.rxnormId[0];
                     resolve({
+                        name: name,
                         rxnorm_id: drugValue
                     });
                 } else {
