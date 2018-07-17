@@ -1,3 +1,20 @@
+:root {
+  /* color palette */
+  --pblack: #333333;
+  --pdarkgrey: #707070;
+  --plightgrey: #EDECE8;
+  --pblue: #62B5E5;
+  --plavender: #BF9BDE;
+  --pgreen: #CFE89C;
+/* example how to reference:
+  background-color: var(--pgreen) */
+}
+
+#headertitle {
+  color: var(--plightgrey);
+}
+
+
 .App {
   text-align: center;
 }

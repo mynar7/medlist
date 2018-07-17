@@ -269,4 +269,16 @@ router.get('/schedule', (req, res) => {
     .catch(err => res.json(err));
 });
 
+//get a schedule
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.put('/dose/:doseId', (req, res) => {
+    db.Dose_Time.update (
+            {time: req.body.time, dose: req.body.dose, note: req.body.note},
+            {returning: true, where: {UserId: process.env.TEST_ID, //req.user.id,
+                id: req.params.doseId}}
+          )
+    .then(result => res.json(result))
+    .catch(err => res.json(err));  
+})
+
 module.exports = router;
