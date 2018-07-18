@@ -33,6 +33,16 @@ router.get('/rxnorms/:meds', (req, res) => {
         .catch(err => res.json(err) );
 });
 
+router.get('/infomed/:med', (req, res) => {
+    pharma.searchFDA(req.params.med)
+    .then(result => {
+        // console.log(result[0].openfda_id);
+        return pharma.getFDAinfo(result[0].openfda_id);
+    })
+    .then(result => res.json(result))
+    .catch(err => res.json(err));
+})
+
 //find med in FDA db
 
 // ADD BACK IN CHECKAUTH

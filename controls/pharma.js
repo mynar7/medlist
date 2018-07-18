@@ -106,6 +106,32 @@ pharma = {
                 resolve(nameSearchArr);
             }).catch(err => reject({Error: "No Match"}));
         });//end promise
+    },
+
+    getFDAinfo: function(fdaID) {
+        const queryURL = `https://api.fda.gov/drug/label.json?search=id:${fdaID}`;
+        return new Promise((resolve, reject) => {
+            $.get(queryURL)
+            .then(res => {
+                // console.log(res.data)
+                const { 
+                    indications_and_usage,
+                    warnings,
+                    overdosage,
+                    stop_use,
+                    do_not_use
+                } = res.data.results[0];
+                resolve({
+                    brand_name: res.data.results[0].openfda.brand_name,
+                    generic_name: res.data.results[0].openfda.generic_name,
+                    indications_and_usage: indications_and_usage,
+                    warnings: warnings,
+                    stop_use: stop_use,
+                    do_not_use: do_not_use,
+                    overdosage: overdosage
+                });
+            }).catch(err => reject(console.log(err)));
+        });
     }
 
 }//end obj
