@@ -6,6 +6,7 @@
   --pblue: #62B5E5;
   --plavender: #BF9BDE;
   --pgreen: #CFE89C;
+  --pwhite: #dddddd;
 /* example how to reference:
   background-color: var(--pgreen) */
 }
@@ -14,32 +15,50 @@
   color: var(--plightgrey);
 }
 
+.Header {
+  background-color: var(--pblue);
+  width: 100%;
+}
 
-.App {
+.medtable{
+  width: 100%;
+}
+
+.meddetailsbtn {
+  background-color: var(--plavender);
+}
+
+
+
+.medlistkey {
   text-align: center;
+  /* background-color: var(--plightgrey); */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.medlistkeyrow {
+  background-color: var(--plightgrey);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#newmedlabel{
+  color: var(--plavender);
+}
+.medlist{
+  background-color: var(--pwhite);
 }
 
-.App-title {
-  font-size: 1.5em;
+.newmedbtn {
+  background-color: var(--pgreen);
 }
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+
+
+
+
+
+
+
+
+
+
+
