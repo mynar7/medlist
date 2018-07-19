@@ -9,7 +9,7 @@ class Navbar extends Component {
     return(
         <div className="footer">
         <Router>
-        <Link to={"/">}<button type='button' className='navbutton'>Meds list</button></Link>
+        <Link to={"/"}><button type='button' className='navbutton'>Meds list</button></Link>
         </Router>
         <Router>
         <Link to={"/interactionsview/"}><button type='button' className='navbutton'>Interaction</button></Link>

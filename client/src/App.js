@@ -20,6 +20,7 @@ class App extends Component {
           <Route path = "/" component={Home} exact />
           <Route path = "/meddetail/:medId" component={Meddetail} exact />
           <Route path = "/interactionsview" component={Interactions} exact />
+          
         </Switch>
       </Router>  
       <Navbar />
