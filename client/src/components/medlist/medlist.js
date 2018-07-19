@@ -3,6 +3,7 @@ import Meditem from '../meditem'
 class Medlist extends Component {
 
     render() {
+        console.log(this.props.meds);
         let meds;
         if (this.props.meds){
             meds = this.props.meds.map(med =>{
