@@ -8,8 +8,7 @@ class Medlist extends Component {
         if (this.props.meds){
             meds = this.props.meds.map(med =>{
             //console.log(med)
-            return (<Meditem key={med.id} meditem={med} />
-                )
+            return (<Meditem key={med.id} meditem={med} />)
             })
         }
         //console.log(this.props)
