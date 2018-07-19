@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     user_name: DataTypes.STRING,
     generic_name: DataTypes.STRING,
     brand_name: DataTypes.STRING
+    
+
   }, {});
   Med.associate = function(models) {
     Med.belongsTo(models.User, {onDelete: "CASCADE"});
