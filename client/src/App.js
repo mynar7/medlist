@@ -21,7 +21,7 @@ class App extends Component {
         <div>
         <Switch>
           <Route path = "/" component={Home} exact />
-          <Route path = "/meddetail/:medId" component={Meddetail} exact />
+          <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
           <Route path = "/interactionsview" component={Interactions} exact />
           <Route path = "/scheduleview" component={Schedule} exact />
           <Route path = "/search" component={MedSearch} exact />

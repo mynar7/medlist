@@ -114,6 +114,15 @@ pharma = {
         });//end promise
     },
 
+    getFDADetails: function(fdaID) {
+        const queryString = `https://api.fda.gov/drug/label.json?search=id:${fdaID}`;
+        return new Promise((resolve, reject) => {
+            $.get(queryString)
+            .then(res => resolve(res.data.results[0]))
+            .catch(err =>{ reject({Error: "Details not found"})})
+            })
+    },
+
     getFDAinfo: function(fdaID) {
         const queryURL = `https://api.fda.gov/drug/label.json?search=id:${fdaID}`;
         return new Promise((resolve, reject) => {
