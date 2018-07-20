@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Meditem from '../meditem'
+import AddButton from './addMed.png'
 class Medlist extends Component {
 
     render() {
@@ -20,7 +21,7 @@ class Medlist extends Component {
                 <tr className='medlistkeyrow'>
                     <th className="medlistkey">Brand Name</th>
                     <th className="medlistkey">Trade Name</th> 
-                    <th className="medlistkey"><span id="newmedlabel">New Med  </span><button className='newmedbtn' >+</button></th>
+                    <th className="medlistkey"><span id="newmedlabel">New Med  </span><img id="addmedbutton" src={AddButton} alt="addMed" /></th>
                 </tr>
                 
                 {meds}

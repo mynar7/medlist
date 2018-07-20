@@ -1,6 +1,6 @@
 import React, { Component} from "react";
 import {BrowserRouter as Router, Link} from 'react-router-dom';
-
+import Mglass from "./mglass.png"
 class Meditem extends Component {
     
     render() {
@@ -12,8 +12,8 @@ class Meditem extends Component {
                     <td>{this.props.meditem.generic_name}</td>
                     <td>
                         <Link to={`/meddetail/${this.props.meditem.id}`}>
-                            <button type='button' className='meddetailsbtn' data_drug={this.props.meditem.id}>
-                            more info/ dosages</button>
+                            <div  className='meddetailsbtn' data_drug={this.props.meditem.id}>
+                            <img id="mglass" src={Mglass} alt="view" />more info/ dosages</div>
                         </Link>
                     </td>
                 </tr>   

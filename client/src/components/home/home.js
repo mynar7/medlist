@@ -5,7 +5,7 @@ import $ from "axios";
 class Home extends Component {
     constructor() {
         super();
-
+    
         this.state = { meds: []};
     }
 

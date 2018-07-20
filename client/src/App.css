@@ -10,6 +10,9 @@
 /* example how to reference:
   background-color: var(--pgreen) */
 }
+a {
+  text-decoration: none;
+}
 
 .footer {
   position: fixed;
@@ -19,6 +22,20 @@
   background-color:var(--plightgrey);
   color: white;
   text-align: center;
+}
+
+.navbutton {
+  background-color: white;
+  display: inline-block;
+  margin: 15px;
+  border-radius: 10px;
+  padding: 6px;
+  color: var(--pdarkgrey)
+}
+
+.navpic {
+  vertical-align:middle;
+  margin: 3px;
 }
 
 #headertitle {
@@ -32,13 +49,23 @@
 
 .medtable{
   width: 100%;
+  background-color: var(--plightgrey);
 }
+
 
 .meddetailsbtn {
   background-color: var(--plavender);
+  color: var(--plightgrey);
+  border-radius: 10px;
+  padding: 2px;
+  margin: 3px;
+  width: 75%;
+  align-self: center;
 }
-
-
+#mglass{
+  vertical-align:middle;
+  margin: 3px;
+}
 
 .medlistkey {
   text-align: center;
@@ -46,29 +73,35 @@
 }
 
 .medlistkeyrow {
-  background-color: var(--plightgrey);
+  background-color: var(--pwhite);
+  color: var(--pdarkgrey);
 }
 
 #newmedlabel{
   color: var(--plavender);
+  /* vertical-align: center; */
 }
+
+#addmedbutton{
+  vertical-align:middle
+}
+
 .medlist{
   background-color: var(--pwhite);
+  color: var(--plightgrey);
+}
+
+.meditem {
+  background-color: white; 
+  color: var(--pdarkgrey);
+  text-align: center;
 }
 
 .newmedbtn {
   background-color: var(--pgreen);
 }
 
-
-
-
-
-
-
-
-
-
-
-
+a:hover {
+cursor: pointer;
+}
 
