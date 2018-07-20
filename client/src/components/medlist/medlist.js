@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import Meditem from '../meditem'
 import AddButton from './addMed.png'
 class Medlist extends Component {
@@ -21,7 +22,12 @@ class Medlist extends Component {
                 <tr className='medlistkeyrow'>
                     <th className="medlistkey">Brand Name</th>
                     <th className="medlistkey">Trade Name</th> 
-                    <th className="medlistkey"><span id="newmedlabel">New Med  </span><img id="addmedbutton" src={AddButton} alt="addMed" /></th>
+                    <th className="medlistkey">
+                        <span id="newmedlabel">New Med  </span>
+                        <Link to="/search">
+                            <img id="addmedbutton" src={AddButton} alt="addMed" />
+                        </Link>
+                    </th>
                 </tr>
                 
                 {meds}
