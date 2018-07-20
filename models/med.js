@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Med = sequelize.define('Med', {
     openFDA_id: DataTypes.STRING,
-    user_name: DataTypes.STRING,
+    note: DataTypes.STRING,
     generic_name: DataTypes.STRING,
     brand_name: DataTypes.STRING
     

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import Meditem from '../meditem'
 class Medlist extends Component {
 
@@ -20,7 +21,12 @@ class Medlist extends Component {
                 <tr className='medlistkeyrow'>
                     <th className="medlistkey">Brand Name</th>
                     <th className="medlistkey">Trade Name</th> 
-                    <th className="medlistkey"><span id="newmedlabel">New Med  </span><button className='newmedbtn' >+</button></th>
+                    <th className="medlistkey">
+                        <span id="newmedlabel">New Med  </span>
+                        <Link to="/search">
+                            <button className='newmedbtn' >+</button>
+                        </Link>
+                    </th>
                 </tr>
                 
                 {meds}

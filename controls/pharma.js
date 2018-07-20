@@ -89,7 +89,10 @@ pharma = {
                         if(item.openfda.route) {
                             //ensure only unique results returned
                             let nameFilterArr = newArr.filter(
-                                element => element.brand_name.toLowerCase() === item.openfda.brand_name[0].toLowerCase());
+                                element => {
+                                    return ( element.brand_name.toLowerCase().trim() === item.openfda.brand_name[0].toLowerCase().trim() &&
+                                             element.route.toLowerCase().trim() === item.openfda.route[0].toLowerCase().trim() );
+                                });
                             if(nameFilterArr.length === 0) {
                                 newArr.push({
                                     brand_name: item.openfda.brand_name[0],
@@ -104,7 +107,10 @@ pharma = {
                     return newArr;
                 }, []);
                 resolve(nameSearchArr);
-            }).catch(err => reject({Error: "No Match"}));
+            }).catch(err => {
+                console.log(err);
+                reject({Error: "No Match"});
+            });
         });//end promise
     },
 
