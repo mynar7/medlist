@@ -168,7 +168,7 @@ router.post('/addMed', (req, res) => {
             UserId: process.env.TEST_ID, //req.user.id,
             brand_name: req.body.brand_name,
             generic_name: req.body.generic_name,
-            user_name: req.body.user_name,
+            // note: req.body.note,
             openFDA_id: req.body.openfda_id
         })
     ])
