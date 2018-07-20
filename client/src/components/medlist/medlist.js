@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import Meditem from '../meditem'
+import AddButton from './addMed.png'
 class Medlist extends Component {
 
     render() {
@@ -24,7 +25,7 @@ class Medlist extends Component {
                     <th className="medlistkey">
                         <span id="newmedlabel">New Med  </span>
                         <Link to="/search">
-                            <button className='newmedbtn' >+</button>
+                            <img id="addmedbutton" src={AddButton} alt="addMed" />
                         </Link>
                     </th>
                 </tr>
