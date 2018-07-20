@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     dose: DataTypes.STRING,
-    note: DataTypes.STRING
+   note: DataTypes.STRING
   }, {});
   Dose_Time.associate = function(models) {
     Dose_Time.belongsTo(models.Med, {onDelete: 'CASCADE'});

@@ -9,7 +9,6 @@ class Home extends Component {
         this.state = { meds: []};
     }
 
-
     componentDidMount() {
         $.get('/api/allMeds')
         .then( res=> {

@@ -11,7 +11,7 @@ class Meditem extends Component {
                     <td><b>{this.props.meditem.brand_name}</b></td>  
                     <td>{this.props.meditem.generic_name}</td>
                     <td>
-                        <Link to={`/meddetail/${this.props.meditem.id}`}>
+                        <Link to={`/meddetail/${this.props.meditem.id}/${this.props.meditem.openFDA_id}/${this.props.meditem.brand_name}`}>
                             <div  className='meddetailsbtn' data_drug={this.props.meditem.id}>
                             <img id="mglass" src={Mglass} alt="view" />more info/ dosages</div>
                         </Link>

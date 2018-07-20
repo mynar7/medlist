@@ -10,6 +10,10 @@
 /* example how to reference:
   background-color: var(--pgreen) */
 }
+
+body {
+  padding-bottom: 200px;
+}
 a {
   text-decoration: none;
 }
@@ -47,11 +51,29 @@ a {
   width: 100%;
 }
 
+.meddetaildrugtitle{
+  color: var(--pdarkgrey);
+}
+
+.meddetailitem{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.meddetailitemtitle{
+  color: var(--plavender);
+}
+
+.meddetailitemtext{
+  color: var(--vdarkgrey)
+}
+
 .medtable{
   width: 100%;
   background-color: var(--plightgrey);
 }
-
 
 .meddetailsbtn {
   background-color: var(--plavender);
@@ -79,7 +101,6 @@ a {
 
 #newmedlabel{
   color: var(--plavender);
-  /* vertical-align: center; */
 }
 
 #addmedbutton{

@@ -7,7 +7,7 @@ class Medlist extends Component {
     render() {
         console.log(this.props.meds);
         let meds;
-        if (this.props.meds){
+        if (this.props.meds.length > 0 ){ 
             meds = this.props.meds.map(med =>{
             //console.log(med)
             return (<Meditem key={med.id} meditem={med} />)
