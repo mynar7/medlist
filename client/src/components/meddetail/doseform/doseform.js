@@ -59,7 +59,7 @@ class Doseform extends Component {
             }
             $.post(`/api/addDose/${this.props.medId}`, data)
             .then(res => {
-                console.log(res.data);
+                this.props.update();
             })
             .catch(err => console.log(err))
         }
@@ -67,9 +67,9 @@ class Doseform extends Component {
 
     render() {
         return (
-            <div className="column y-center">
+            <div className="column dose-form">
                 {this.state.error && this.state.error.map((x, i) => <p key={i}>{x}</p>)}
-                <form className="row x-center">
+                <form className="column">
                     <label htmlFor="amount">
                         <span>Amount: </span>
                         <input type="text" 
@@ -89,9 +89,9 @@ class Doseform extends Component {
                             <option value="pm">pm</option>
                         </select>
                     </label>
-                    <label htmlFor="note">
                         <span>Note: </span>
-                        <input type="text" value={this.state.note} name="note" onChange={this.update} />
+                    <label htmlFor="note">
+                        <textarea value={this.state.note} name="note" onChange={this.update} />
                     </label>
                     <button type="submit" onClick={this.submit}>Submit</button>
                 </form>
