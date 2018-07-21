@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import $ from 'axios';
+import styles from './schedule.css'
 
 class Schedule extends Component {
 
@@ -20,35 +21,59 @@ class Schedule extends Component {
         });       
     }
 
+    checkfornotes = function(value){
+    if (value) {
+      return ( '(' + value + ')' )
+    }
+    return (null);
+  }
+
+  checkAMPM = function(value){
+       let cut= (value.indexOf(":"));
+       let hour = value.slice(0,cut);
+       let minute = value.slice(cut+1,value.length)
+       let newhour;
+       let designator
+       if (hour == 0) {
+        newhour = 12
+        designator = 'AM'
+       } else if (hour ==12){
+           newhour = 12
+           designator = 'PM'
+       } else if (hour > 12){
+           newhour = hour -12
+           designator = 'PM'
+       }else{
+            newhour = hour
+            designator = 'AM'
+        }
+        return (newhour + ':' + minute + ' ' + designator)
+       }
+
+    
 
 
 render() {
     
-    // function scheduleItem(scheditem){
-    //     if (scheditem.length > 0 ){
-    //         scheduleItem = scheditem.map(item =>{
-    //             return(<div>{item.brandname}</div>)
-    //         })
-
-    //     }
-    // }
-
-
     let sched;
     if (this.state.schedule.length > 0 ){ 
         sched = this.state.schedule.map(scheditem =>{
-        return (<div><schedHeader className="schedHeader">{scheditem.time} </schedHeader><br />
+            let dose;
+            dose = scheditem.meds.map(doseitem=>{
+            return(<div className="doseitem"><input type="checkbox" />{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
+            } )
+
+        return (<div> <div className="timeheader">{this.checkAMPM(scheditem.time)} </div><br />
+        {dose}
         </div>)
 
         })
     }
 
-    
-
 
     return(
     <div>
-        <h1>Dosages</h1>
+        <h1 className="scheduleheader">Schedule of dosages</h1>
         {sched}
 
 

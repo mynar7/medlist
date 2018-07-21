@@ -20,18 +20,18 @@ class App extends Component {
       <Header /> 
       <Router>
         <div>
-        <Switch>
+          <Switch>
 
-          {/* <Route path = "/" component={login} exact /> */}
-          <Route path = "/medlistcontainer" component={Medlistcontainer} exact />
-          <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
-          <Route path = "/interactionsview" component={Interactions} exact />
-          <Route path = "/scheduleview" component={Schedule} exact />
-          <Route path = "/search" component={MedSearch} exact />
-        </Switch>
+            {/* <Route path = "/" component={login} exact /> */}
+            <Route path = "/medlistcontainer" component={Medlistcontainer} exact />
+            <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
+            <Route path = "/interactionsview" component={Interactions} exact />
+            <Route path = "/scheduleview" component={Schedule} exact />
+            <Route path = "/search" component={MedSearch} exact />
+          </Switch>
        
-      <Navbar />
-      </div>
+          <Navbar />
+        </div>
       </Router> 
       </div>
     );
