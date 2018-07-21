@@ -11,7 +11,7 @@ class Navbar extends Component {
     return(
         <div className="footer">
         
-        <Link to={"/"}><div className='navbutton'><img className="navpic" src={Bottle} alt="bottle" />Med List</div></Link>
+        <Link to={"/medlistcontainer/"}><div className='navbutton'><img className="navpic" src={Bottle} alt="bottle" />Med List</div></Link>
         
         <Link to={"/interactionsview/"}><div className='navbutton'><img className="navpic" src={Inter} alt="Inter" />Interactions</div></Link>
         

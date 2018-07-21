@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import Home from './components/home';
+// import Home from './components/home';
+import Medlistcontainer from './components/medlistcontainer'
 import Meddetail from './components/meddetail';
 import Interactions from './components/interactions';
 import Navbar from './components/navbar';
@@ -20,7 +21,9 @@ class App extends Component {
       <Router>
         <div>
         <Switch>
-          <Route path = "/" component={Home} exact />
+
+          {/* <Route path = "/" component={login} exact /> */}
+          <Route path = "/medlistcontainer" component={Medlistcontainer} exact />
           <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
           <Route path = "/interactionsview" component={Interactions} exact />
           <Route path = "/scheduleview" component={Schedule} exact />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Medlist from '../medlist'
 import $ from "axios";
 
-class Home extends Component {
+class Medlistcontainer extends Component {
     constructor() {
         super();
     
@@ -44,4 +44,4 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default Medlistcontainer;
