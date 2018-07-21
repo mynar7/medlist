@@ -30,7 +30,11 @@ class MedSearch extends Component {
     render() {
         return (
             <div className="column y-center">
-                <div className="row x-center">
+                {
+                    this.state.results.length === 0 &&
+                    <h1>Start Typing to Search for a med</h1>
+                }
+                <div className="row x-center med-search-bar">
                     <label htmlFor="med-search-bar">
                         <span>Search for a medication: </span>
                         <input type="text" 
@@ -46,7 +50,7 @@ class MedSearch extends Component {
                 </div>
                 <div className="column search-results">
                 {
-                    (this.state.results.length > 0) ?
+                    (this.state.results.length > 0) &&
                     this.state.results.map(x => (
                         <MedResult 
                         generic_name={x.generic_name}
@@ -54,14 +58,13 @@ class MedSearch extends Component {
                         route={x.route}
                         key={x.openfda_id}
                         substances={
-                            x.substance.length > 1 ?
+                            x.substance && x.substance.length > 1 ?
                             x.substance.join(", ") :
                             x.substance
                         }
                         addMed={() => {this.addMed(x)}}
                         />
                     ))
-                    : <h1>Start Typing to Search for a med</h1>
                 }
                 </div>
 
