@@ -204,6 +204,18 @@ router.post('/addMed', (req, res) => {
         .catch(err => res.json(err));
 });
 
+//get doses
+// ADD BACK IN CHECKAUTH AND REQ.USER.ID
+router.get('/doses/:medId', (req, res) => {
+    db.Dose_Time.findAll({
+        where: {
+            MedId: req.params.medId
+        }
+    }).then(result => res.json(result))
+    .catch(err => res.json(err));
+});
+
+
 //add a dosage and time to administer
 // ADD BACK IN CHECKAUTH AND REQ.USER.ID
 router.post('/addDose/:medId', (req, res) => {

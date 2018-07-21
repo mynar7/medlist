@@ -131,6 +131,7 @@ pharma = {
                 // console.log(res.data)
                 const { 
                     indications_and_usage,
+                    dosage_forms_and_strengths,
                     warnings,
                     overdosage,
                     stop_use,
@@ -140,6 +141,7 @@ pharma = {
                     brand_name: res.data.results[0].openfda.brand_name,
                     generic_name: res.data.results[0].openfda.generic_name,
                     indications_and_usage: indications_and_usage,
+                    dosage_forms_and_strengths: dosage_forms_and_strengths,
                     warnings: warnings,
                     stop_use: stop_use,
                     do_not_use: do_not_use,
