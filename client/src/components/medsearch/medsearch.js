@@ -29,7 +29,7 @@ class MedSearch extends Component {
 
     render() {
         return (
-            <div className="column">
+            <div className="column y-center">
                 <div className="row x-center">
                     <label htmlFor="med-search-bar">
                         <span>Search for a medication: </span>
