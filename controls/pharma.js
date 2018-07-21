@@ -145,7 +145,7 @@ pharma = {
                     do_not_use: do_not_use,
                     overdosage: overdosage
                 });
-            }).catch(err => reject(console.log(err)));
+            }).catch(err => reject({Error: "Drug not found"}));
         });
     }
 

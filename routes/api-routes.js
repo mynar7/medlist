@@ -46,11 +46,9 @@ router.get('/infomed/:med', (req, res) => {
 })
 
 router.get('/medInfo/:FDAId', (req, res) => {
-pharma.getFDADetails(req.params.FDAId)
-    .then(result => {
-        console.log(result)
-        res.json(result)})
-    .catch(err => res.json(err));
+    pharma.getFDAinfo(req.params.FDAId)
+        .then(result => res.json(result))
+        .catch(err => res.json(err));
 });
 
 

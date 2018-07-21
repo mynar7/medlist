@@ -6,62 +6,37 @@ class Meddetail extends Component {
 
     constructor() {
         super();
-
-        this.state = { med: []};
+        this.state = { medInfo: []};
     }
 
 
 componentDidMount(){
         $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
         .then( res=> {
-            this.setState({med: res.data});
-            console.log (res.data)
+            this.setState({
+                medInfo: Object.entries(res.data)
+            });
         })
         .catch( error=> {
-          throw (error);
+          console.log(error);
         });       
 }
-
-checkDescription(){
-    if(this.state.med.description){
-        return(<Meddetailitem title='Description' text={this.state.med.description} />)
-    }   
-}
-
-checkIndicationsAndUsage(){
-    if(this.state.med.indications_and_usage){
-        return(<Meddetailitem title='Indications and usage' text={this.state.med.indications_and_usage} />)
-    }   
-}
-
-checkBoxedWarning(){
-    if(this.state.med.boxed_warning){
-        return(<Meddetailitem title='Boxed Warning' text={this.state.med.boxed_warning} />)
-    }
-}
-
-checkWarningsAndCautions(){
-    if(this.state.med.warnings_and_cautions){
-        return(<Meddetailitem title='Warnings and Cautions' text={this.state.med.warnings_and_cautions} />)
-    }
-}
-
 
     render() {
         
         return (
-            <div>
+            <div className="column y-center">
             <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
 
-
-            {/* <Meddetailitem title='Description' text={this.state.med.description} /> */}
-            {this.checkDescription()}
-            {/* <Meddetailitem title='Indications and usage' text={this.state.med.indications_and_usage} /> */}
-            {this.checkIndicationsAndUsage()}
-            {/* <Meddetailitem title='Boxed Warning' text={this.state.med.boxed_warning} /> */}
-            {this.checkBoxedWarning()}
-            {/* <Meddetailitem title='Warning and Cautions' text={this.state.med.warnings_and_cautions} /> */}
-            {this.checkWarningsAndCautions()}
+            <h1 className="meddetaildrugtitle">Drug Info:</h1>
+            <div>
+            {
+                this.state.medInfo.length > 0 &&
+                this.state.medInfo.map(x => {
+                    return <Meddetailitem key={x[0]} title={x[0].replace(/_/gi, ' ')} text={x[1]} />
+                })
+            }
+            </div>
             </div> 
         )
 
