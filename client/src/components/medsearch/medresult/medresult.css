@@ -1,4 +1,8 @@
-.med-result {
-    width: 100vw;
+.med-result-column {
+    width: 300px;
+    text-align: center;
 }
 
+.med-result-brand {
+    text-align: center;
+}
