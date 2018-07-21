@@ -75,6 +75,23 @@ a {
   background-color: var(--plightgrey);
 }
 
+#interactionmain{
+  background-color: white;
+}
+
+#interactionsheader{
+  margin-left: 20px;
+  color: var(--plavender)
+}
+
+.interaction{
+  background-color: var(--pwhite);
+  color: var(--pdarkgrey);
+  margin: 20px;
+  padding: 25px;
+  border-radius: 10px
+}
+
 .meddetailsbtn {
   background-color: var(--plavender);
   color: var(--plightgrey);

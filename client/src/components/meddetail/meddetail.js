@@ -54,13 +54,9 @@ checkWarningsAndCautions(){
             <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
 
 
-            {/* <Meddetailitem title='Description' text={this.state.med.description} /> */}
             {this.checkDescription()}
-            {/* <Meddetailitem title='Indications and usage' text={this.state.med.indications_and_usage} /> */}
             {this.checkIndicationsAndUsage()}
-            {/* <Meddetailitem title='Boxed Warning' text={this.state.med.boxed_warning} /> */}
             {this.checkBoxedWarning()}
-            {/* <Meddetailitem title='Warning and Cautions' text={this.state.med.warnings_and_cautions} /> */}
             {this.checkWarningsAndCautions()}
             </div> 
         )

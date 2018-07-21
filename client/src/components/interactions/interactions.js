@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import $ from "axios";
 
 class Interactions extends Component {
-
+    constructor() {
+        super();
+    
+        this.state = { interactions: []};
+    }
 
     componentDidMount() {
         $.get('/api/interactions')
         .then( res=> {
-            // this.setState({meds: res.data});
-            console.log (res)
+             this.setState({interactions: res.data});
+            console.log (res.data)
         })
         .catch( error=> {
           throw (error);
@@ -16,9 +20,18 @@ class Interactions extends Component {
     }
 
     render() {
+        let interactions;
+        if (this.state.interactions.length > 0 ){ 
+            interactions = this.state.interactions.map(inter =>{
+            //console.log(med)
+            return (<div className='interaction'>{inter} </div>)
+            })
+        }
         return(
-            <div>
-                <h1>Interactions view</h1>
+            <div id="interactionmain">
+
+                <h1 id="interactionsheader">Interactions</h1>
+                {interactions}
             </div>
         )
 
