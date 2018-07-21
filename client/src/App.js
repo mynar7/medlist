@@ -28,7 +28,7 @@ class App extends Component {
         </Switch>
        
       <Navbar />
-    </div>
+      </div>
       </Router> 
       </div>
     );

@@ -53,6 +53,7 @@ class Meddetail extends Component {
     render() {
         
         return (
+
             <div className="column y-center">
                 <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
                 <div className="row split">
