@@ -23,13 +23,29 @@ class Schedule extends Component {
 
 
 render() {
+    
+    // function scheduleItem(scheditem){
+    //     if (scheditem.length > 0 ){
+    //         scheduleItem = scheditem.map(item =>{
+    //             return(<div>{item.brandname}</div>)
+    //         })
+
+    //     }
+    // }
+
+
     let sched;
     if (this.state.schedule.length > 0 ){ 
         sched = this.state.schedule.map(scheditem =>{
-        
-        return (<schedHeader className="schedHeader">{scheditem.time} </schedHeader>)
+        return (<div><schedHeader className="schedHeader">{scheditem.time} </schedHeader><br />
+        </div>)
+
         })
     }
+
+    
+
+
     return(
     <div>
         <h1>Dosages</h1>
