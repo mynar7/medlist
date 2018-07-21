@@ -1,8 +1,12 @@
-.med-result-column {
-    width: 300px;
-    text-align: center;
+.med-result-column > hr {
+    width: 100%;
 }
 
 .med-result-brand {
     text-align: center;
+}
+
+.med-result-brand > button {
+    margin: 0 10px;
+    border-radius: 20px;
 }
