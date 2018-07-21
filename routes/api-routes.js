@@ -260,6 +260,7 @@ router.get('/schedule', (req, res) => {
                 //push data to that group
                 if (timeObj) {
                     timeObj.meds.push({
+                        doseId: dose.id,
                         dose: dose.dose,
                         note: dose.note,
                         med: dose.Med
@@ -269,6 +270,7 @@ router.get('/schedule', (req, res) => {
                     newArr.push({
                         time: dose.time,
                         meds: [{
+                            doseId: dose.id,
                             dose: dose.dose,
                             note: dose.note,
                             med: dose.Med
