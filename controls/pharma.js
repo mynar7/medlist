@@ -132,6 +132,7 @@ pharma = {
                 const { 
                     indications_and_usage,
                     dosage_forms_and_strengths,
+                    dosage_and_administration,
                     warnings,
                     overdosage,
                     stop_use,
@@ -142,6 +143,7 @@ pharma = {
                     generic_name: res.data.results[0].openfda.generic_name,
                     indications_and_usage: indications_and_usage,
                     dosage_forms_and_strengths: dosage_forms_and_strengths,
+                    dosage_and_administration: dosage_and_administration,
                     warnings: warnings,
                     stop_use: stop_use,
                     do_not_use: do_not_use,
