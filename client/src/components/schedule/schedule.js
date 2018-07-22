@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import $ from 'axios';
-import styles from './schedule.css'
+import './schedule.css'
 
 class Schedule extends Component {
 
@@ -37,7 +37,7 @@ class Schedule extends Component {
        if (hour == 0) {
         newhour = 12
         designator = 'AM'
-       } else if (hour ==12){
+       } else if (hour == 12){
            newhour = 12
            designator = 'PM'
        } else if (hour > 12){

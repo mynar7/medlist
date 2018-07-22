@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, withRouter, Switch} from 'react-router-dom';
+import { Route, withRouter, Switch} from 'react-router-dom';
 import $ from "axios";
 import Medlistcontainer from './components/medlistcontainer'
 import Meddetail from './components/meddetail';
