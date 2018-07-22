@@ -7,15 +7,15 @@ const Dosedetail = props => {
     let minutes = timeArr[1];
     let ampm;
     if(hours === 12) {
-        ampm = 'pm';
+        ampm = 'PM';
     } else if(hours === 0) {
         hours = 12;
-        ampm = 'am';
+        ampm = 'AM';
     } else if(hours > 12) {
         hours -= 12;
-        ampm = 'pm';
+        ampm = 'PM';
     } else {
-        ampm = 'am';
+        ampm = 'AM';
     }
     return (
     <div>

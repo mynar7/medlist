@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './header.css';
-import img from './pill2.png';
+import img from './pill.png';
 
 class Header extends Component {
     constructor(props) {

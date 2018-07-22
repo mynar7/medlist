@@ -85,8 +85,8 @@ class Doseform extends Component {
                             pattern="([1-9]|1[0-2]):[0-5][0-9]"
                             onChange={this.update}/>
                         <select value={this.state.ampm} name="ampm" onChange={this.update}>
-                            <option value="am">am</option>
-                            <option value="pm">pm</option>
+                            <option value="am">AM</option>
+                            <option value="pm">PM</option>
                         </select>
                     </div>
                         <span>Note: </span>

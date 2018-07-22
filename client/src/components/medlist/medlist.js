@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import Meditem from '../meditem'
-import AddButton from './addMed.png'
+import Meditem from '../meditem';
+import "./medlist.css";
 class Medlist extends Component {
 
     render() {
@@ -22,10 +22,10 @@ class Medlist extends Component {
                 <tr className='medlistkeyrow'>
                     <th className="medlistkey">Brand Name</th>
                     <th className="medlistkey">Trade Name</th> 
-                    <th className="medlistkey">
+                    <th className="medlistkey row y-center split">
                         <span id="newmedlabel">New Med  </span>
                         <Link to="/search">
-                            <img id="addmedbutton" src={AddButton} alt="addMed" />
+                            <i class="fas fa-plus-circle"></i>
                         </Link>
                     </th>
                 </tr>
