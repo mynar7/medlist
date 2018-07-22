@@ -56,7 +56,6 @@ class App extends Component {
     console.log(this.state.isAuth);
     return ( 
       <div className="App">
-<<<<<<< HEAD
       <Header isAuth={this.state.isAuth} 
         email={this.state.email} 
         logout={this.logout}
@@ -71,24 +70,6 @@ class App extends Component {
           <Route path = "/scheduleview" component={Schedule} exact />
           <Route path = "/search" component={MedSearch} exact />
         </Switch>
-=======
-      <Header /> 
-      <Router>
-        <div>
-          <Switch>
-
-            {/* <Route path = "/" component={login} exact /> */}
-            <Route path = "/medlistcontainer" component={Medlistcontainer} exact />
-            <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
-            <Route path = "/interactionsview" component={Interactions} exact />
-            <Route path = "/scheduleview" component={Schedule} exact />
-            <Route path = "/search" component={MedSearch} exact />
-          </Switch>
-       
-          <Navbar />
-        </div>
-      </Router> 
->>>>>>> 113eeb19726dc82b042f89fe8c915a210d2db70b
       </div>
     );
   }
