@@ -1,19 +1,15 @@
 .medlist {
-    background-color: var(--pwhite);
-    color: var(--plightgrey);
-}
-
-.medtable {
-    width: 100%;
-    background-color: var(--plightgrey);
-}
-
-.medlistkey {
-    text-align: center;
-    /* background-color: var(--plightgrey); */
-}
-  
-.medlistkeyrow {
-    background-color: var(--plightgrey);
     color: var(--pdarkgrey);
+}
+
+.medlistkey-row {
+    width: 100%;
+    background-color: var(--plightgrey)
+}
+
+.medlistkey-col {
+    width: 300px;
+}
+
+.medlist-newmed-btn {
 }

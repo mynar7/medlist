@@ -6,19 +6,26 @@ class Meditem extends Component {
     render() {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return ( 
-            
-                <tr className="meditem">   
-                    <td><b>{this.props.meditem.brand_name}</b></td>  
-                    <td>{this.props.meditem.generic_name}</td>
-                    <td>
+            <div className="column meditem">
+                <div className="meditem-row row y-center x-center">
+                    <span className="meditem-number">#{this.props.number + 1}</span>
+                    <div className="meditem-col">
+                        <div>
+                            <b>{this.props.meditem.brand_name}</b>
+                        </div>  
+                        <div>{this.props.meditem.generic_name}</div>
+                    </div>
+                    <div>
                         <Link to={`/meddetail/${this.props.meditem.id}/${this.props.meditem.openFDA_id}/${this.props.meditem.brand_name}`}>
                             <div  className='row x-center y-center div-to-btn meddetailsbtn' data_drug={this.props.meditem.id}>
                                 <span>Info and doses</span>
-                                <i class="fas fa-pills"></i>
+                                <i className="fas fa-pills"></i>
                             </div>
                         </Link>
-                    </td>
-                </tr>   
+                    </div>
+                </div>   
+                <hr/>    
+            </div>
         )
     }
 }

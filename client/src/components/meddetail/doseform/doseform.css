@@ -6,9 +6,10 @@
     margin: 20px 0;
 }
 .dose-form input, .dose-form textarea, .dose-form select {
+    font-family: inherit;
     margin: 10px 0;
     padding: 8px;
-    border: 1px solid var(--pdarkgrey);
+    border: 1px solid var(--plightgrey);
     border-radius: 5px; 
     resize: none;
 }
@@ -24,7 +25,6 @@
 
 .dose-form textarea {
     height: 100px;
-    font-family: inherit;
 }
 
 .dose-form-time-label > input {

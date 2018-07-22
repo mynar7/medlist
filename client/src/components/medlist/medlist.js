@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import Meditem from '../meditem';
+import Meditem from './meditem';
 import "./medlist.css";
 class Medlist extends Component {
 
@@ -8,31 +8,30 @@ class Medlist extends Component {
         console.log(this.props.meds);
         let meds;
         if (this.props.meds.length > 0 ){ 
-            meds = this.props.meds.map(med =>{
+            meds = this.props.meds.map((med, index) =>{
             //console.log(med)
-            return (<Meditem key={med.id} meditem={med} />)
+            return (<Meditem key={med.id} number={index} meditem={med} />)
             })
         }
         //console.log(this.props)
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return ( 
-            <div className = 'Medlist' >
-            <table className='medtable'>
-                <tbody>
-                <tr className='medlistkeyrow'>
-                    <th className="medlistkey">Brand Name</th>
-                    <th className="medlistkey">Trade Name</th> 
-                    <th className="medlistkey row y-center split">
-                        <span id="newmedlabel">New Med  </span>
-                        <Link to="/search">
-                            <i class="fas fa-plus-circle"></i>
+            <div className = 'medlist column y-center' >
+                <div className='medlistkey-row row y-center x-center'>
+                    <div className="medlistkey-col column">
+                        <div className="medlistkey"><b>Brand Name</b></div>
+                        <div className="medlistkey">Generic Name</div> 
+                    </div>
+                    <div className="medlistkey row y-center">
+                        <Link className="row y-center medlist-newmed-btn div-to-btn" to="/search">
+                            <i className="fas fa-plus"></i>
+                            <b>New Med</b>
                         </Link>
-                    </th>
-                </tr>
+                    </div>
+                </div>
                 
                 {meds}
-                </tbody>
-            </table>
+                
             </div>
         )
     }
