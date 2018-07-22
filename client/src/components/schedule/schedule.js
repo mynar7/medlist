@@ -16,7 +16,7 @@ class Schedule extends Component {
             console.log (res.data)
         })
         .catch( error=> {
-          throw (error);
+            this.props.history.push('/');
         });       
     }
 

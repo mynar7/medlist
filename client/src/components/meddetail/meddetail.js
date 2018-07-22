@@ -20,7 +20,7 @@ class Meddetail extends Component {
                         doses: res.data
                     })
                 })
-                .catch(err => console.log(err));
+                .catch(err => this.props.history.push('/'));
 
 
             $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
@@ -41,7 +41,7 @@ class Meddetail extends Component {
                     doses: res.data
                 })
             })
-            .catch(err => console.log(err));
+            .catch(err => this.props.history.push('/'));
     }
 
     deleteDose = doseId => {

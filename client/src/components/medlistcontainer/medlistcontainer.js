@@ -16,7 +16,7 @@ class Medlistcontainer extends Component {
             console.log (res)
         })
         .catch( error=> {
-          throw (error);
+            this.props.history.push('/');
         });
     //     this.callApi()
     //     .then(res => this.setState({ meds: res })

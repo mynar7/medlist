@@ -15,7 +15,7 @@ class MedSearch extends Component {
             .then(res => {
                 this.setState({results: res.data});
             })
-            .catch(err => console.log(err));
+            .catch(err => this.props.history.push('/'));
         }
     }, 500);
 

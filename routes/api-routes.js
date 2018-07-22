@@ -55,18 +55,17 @@ router.get('/medInfo/:FDAId', (req, res) => {
 //find med in FDA db
 
 // ADD BACK IN CHECKAUTH
-router.get('/searchMed/:med', (req, res) => {
+router.get('/searchMed/:med', checkAuth, (req, res) => {
     pharma.searchFDA(req.params.med)
         .then(result => res.json(result))
         .catch(err => res.json(err));
 });
 
 //delete user
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.delete('/removeuser', (req, res) => {
+router.delete('/removeuser', checkAuth, (req, res) => {
     db.User.destroy({
             where: {
-                id: process.env.TEST_ID, //req.user.id,
+                id: req.user.id,
             }
         })
         .then(result => res.json(result))
@@ -77,11 +76,10 @@ router.delete('/removeuser', (req, res) => {
 
 //joined substances for contents of med
 //joined dose_times for dosages
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/med/:medId', (req, res) => {
+router.get('/med/:medId', checkAuth, (req, res) => {
     db.Med.findOne({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
                 id: req.params.medId
             },
             include: [{
@@ -99,11 +97,10 @@ router.get('/med/:medId', (req, res) => {
 
 //delete one med
 
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.delete('/med/:medId', (req, res) => {
+router.delete('/med/:medId', checkAuth, (req, res) => {
     db.Med.destroy({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
                 id: req.params.medId
             }
         }).then(results => res.json(results))
@@ -113,11 +110,10 @@ router.delete('/med/:medId', (req, res) => {
 
 //get all meds without doses
 
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/allMeds', (req, res) => {
+router.get('/allMeds', checkAuth, (req, res) => {
     db.Med.findAll({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
             }
         }).then(results => res.json(results))
         .catch(err => res.json(err));
@@ -127,11 +123,10 @@ router.get('/allMeds', (req, res) => {
 
 //joined substances for contents of med
 //joined dose_times for dosages
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/allMeds/more', (req, res) => {
+router.get('/allMeds/more', checkAuth, (req, res) => {
     db.Med.findAll({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
             },
             include: [{
                     model: db.Substance,
@@ -148,11 +143,10 @@ router.get('/allMeds/more', (req, res) => {
 
 //get interactions
 
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/interactions', (req, res) => {
+router.get('/interactions', checkAuth, (req, res) => {
     db.Substance.findAll({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
             }
         }).then(results => {
             console.log(results.length);
@@ -163,8 +157,7 @@ router.get('/interactions', (req, res) => {
 });
 
 //add a med 
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.post('/addMed', (req, res) => {
+router.post('/addMed', checkAuth, (req, res) => {
     let substances = req.body.substance;
     Promise.all([
             //convert substances to rxnormids
@@ -172,7 +165,7 @@ router.post('/addMed', (req, res) => {
             //add med to DB
             db.Med.create({
                 //manually inserting id here so that I can test without a frontend
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
                 brand_name: req.body.brand_name,
                 generic_name: req.body.generic_name,
                 // note: req.body.note,
@@ -187,7 +180,7 @@ router.post('/addMed', (req, res) => {
                     rxnorm_id: x.rxnorm_id,
                     name: x.name,
                     MedId: result[1].id,
-                    UserId: process.env.TEST_ID, //req.user.id,
+                    UserId: req.user.id,
                 });
             });
             //bulk insert those substances into db under added med's ID
@@ -205,8 +198,7 @@ router.post('/addMed', (req, res) => {
 });
 
 //get doses
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/doses/:medId', (req, res) => {
+router.get('/doses/:medId', checkAuth, (req, res) => {
     db.Dose_Time.findAll({
         where: {
             MedId: req.params.medId
@@ -217,10 +209,9 @@ router.get('/doses/:medId', (req, res) => {
 
 
 //add a dosage and time to administer
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
 router.post('/addDose/:medId', (req, res) => {
     db.Dose_Time.create({
-            UserId: process.env.TEST_ID, //req.user.id,        
+            UserId: req.user.id,        
             MedId: req.params.medId,
             time: req.body.time,
             dose: req.body.dose,
@@ -231,11 +222,10 @@ router.post('/addDose/:medId', (req, res) => {
 
 //delete one dose/time
 
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.delete('/dose/:doseId', (req, res) => {
+router.delete('/dose/:doseId', checkAuth, (req, res) => {
     db.Dose_Time.destroy({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
                 id: req.params.doseId
             }
         }).then(results => res.json(results))
@@ -243,11 +233,10 @@ router.delete('/dose/:doseId', (req, res) => {
 });
 
 //get a schedule
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.get('/schedule', (req, res) => {
+router.get('/schedule', checkAuth, (req, res) => {
     db.Dose_Time.findAll({
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
             },
             include: [{
                 model: db.Med
@@ -299,8 +288,7 @@ router.get('/schedule', (req, res) => {
 });
 
 //get a schedule
-// ADD BACK IN CHECKAUTH AND REQ.USER.ID
-router.put('/dose/:doseId', (req, res) => {
+router.put('/dose/:doseId', checkAuth, (req, res) => {
     db.Dose_Time.update({
             time: req.body.time,
             dose: req.body.dose,
@@ -308,7 +296,7 @@ router.put('/dose/:doseId', (req, res) => {
         }, {
             returning: true,
             where: {
-                UserId: process.env.TEST_ID, //req.user.id,
+                UserId: req.user.id,
                 id: req.params.doseId
             }
         })

@@ -1,15 +1,24 @@
 import React, { Component } from "react";
-// import "./header.css";
-import banner from './bannerpills.jpg'
-class Header extends Component {
+import { Link } from "react-router-dom";
+import './header.css';
 
+class Header extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
-        // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
-            <div className='Header'>   
-                    <img src={banner} alt="logo" />
-            </div>
+            <header className='app-header row y-center'>
+                <span className="app-header-logo">My Meds</span>
+                {
+                    this.props.isAuth ?
+                    <span>Welcome, {this.props.email}! 
+                        <a href="http://localhost:3001/auth/logout">Logout?</a> 
+                    </span> :
+                    <a href="http://localhost:3001/auth/google">Login!</a>
+                }
+            </header>
         )
     }
 }

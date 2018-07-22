@@ -1,0 +1,16 @@
+.app-header {
+    width: 100vw;
+    height: 100px;
+    background-color: var(--pblue);
+    color: white;
+}
+.app-header > span {
+    padding: 20px;
+}
+.app-header-logo {
+    margin-right: auto;
+}
+
+.app-header-logout-btn {
+    cursor: pointer;
+}
