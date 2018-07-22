@@ -24,6 +24,7 @@
 
 .dose-form textarea {
     height: 100px;
+    font-family: inherit;
 }
 
 .dose-form-time-label > input {

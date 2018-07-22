@@ -4,15 +4,12 @@ import './header.css';
 import img from './pill.png';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
             <header className='app-header row y-center'>
                 <Link className="app-header-logo row y-center" to="/">
-                <img className="app-header-logo-img" src={img}/>
+                <img className="app-header-logo-img" src={img} alt="logo"/>
                 <h1>My Meds</h1>
                 </Link>
                 {
