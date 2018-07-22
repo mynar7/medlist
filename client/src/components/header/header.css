@@ -10,6 +10,13 @@
 .app-header-logo {
     margin-left: 20px;
     margin-right: auto;
+    font-family: 'Arbutus Slab', cursive;
+}
+
+.app-header-logo-img {
+    height: 50px;
+    width: auto;
+    margin: 0 30px;
 }
 
 .app-header-logout-btn {

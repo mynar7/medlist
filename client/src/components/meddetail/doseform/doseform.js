@@ -69,31 +69,32 @@ class Doseform extends Component {
         return (
             <div className="column dose-form">
                 {this.state.error && this.state.error.map((x, i) => <p key={i}>{x}</p>)}
-                <form className="column">
-                    <label htmlFor="amount">
-                        <span>Amount: </span>
+                <form className="column y-center">
+                    <span>Amount: </span>
+                    <input type="text" 
+                        autoComplete="off"
+                        value={this.state.amount} 
+                        name="amount" 
+                        onChange={this.update}/>
+                    <span>Time: </span>
+                    <div className="dose-form-time-label">
                         <input type="text" 
-                            value={this.state.amount} 
-                            name="amount" 
-                            onChange={this.update}/>
-                    </label>
-                    <label htmlFor="time" className="dose-form-time-label">
-                        <span>Time: </span>
-                        <input type="text" 
+                            autoComplete="off"
                             value={this.state.time}
                             name="time" 
                             pattern="([1-9]|1[0-2]):[0-5][0-9]"
-                            onChange={this.update}/>:
+                            onChange={this.update}/>
                         <select value={this.state.ampm} name="ampm" onChange={this.update}>
                             <option value="am">am</option>
                             <option value="pm">pm</option>
                         </select>
-                    </label>
+                    </div>
                         <span>Note: </span>
-                    <label htmlFor="note">
-                        <textarea value={this.state.note} name="note" onChange={this.update} />
-                    </label>
-                    <button type="submit" onClick={this.submit}>Submit</button>
+                        <textarea value={this.state.note} 
+                            autoComplete="off"
+                            name="note" 
+                            onChange={this.update} />
+                    <div className="div-to-btn" onClick={this.submit}>Submit</div>
                 </form>
             </div>
         );

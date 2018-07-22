@@ -22,7 +22,7 @@ const Dosedetail = props => {
         <div className="row dose-detail-container">
             <div className="dose-detail">Dose: {props.dose}</div>
             <div className="dose-detail">Time: {`${hours}:${minutes} ${ampm}`}</div>
-            <button onClick={props.delete}>Delete</button>
+            <div className="div-to-btn" onClick={props.delete}>Delete</div>
         </div>
         <div className="row dose-detail-container">
             {props.note && <div className="dose-detail">Note: {props.note}</div>}

@@ -22,7 +22,7 @@ class MedSearch extends Component {
     addMed = medObj => {
         $.post('/api/addmed', medObj)
         .then(res => {
-            this.props.history.push('/medlistcontainer');
+            this.props.history.push(`/meddetail/${res.data[0].id}/${res.data[0].openFDA_id}/${res.data[0].brand_name}`);
         })
         .catch(err => console.log(err));
     }

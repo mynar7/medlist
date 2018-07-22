@@ -60,7 +60,7 @@ render() {
         sched = this.state.schedule.map(scheditem =>{
             let dose;
             dose = scheditem.meds.map(doseitem=>{
-            return(<div className="doseitem"><input type="checkbox" />{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
+            return(<div className="doseitem">{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
             } )
 
         return (<div> <div className="timeheader">{this.checkAMPM(scheditem.time)} </div><br />
