@@ -3,10 +3,10 @@ import './medresult.css';
 
 const MedResult = props => (
     <div className="column y-center med-result-column">
-        <h2 className="med-result-brand row x-center y-center">
-            {props.brand_name}
-            <button onClick={props.addMed}>Add to Med List</button>
-        </h2>
+        <div className="med-result-brand row x-center y-center">
+            <h2>{props.brand_name}</h2>
+            <div className="div-to-btn" onClick={props.addMed}>Add to Med List</div>
+        </div>
         <h4>Generic name: {props.generic_name}</h4>
         <p>Ingredients: {props.substances}</p>
         <p>Route: {props.route}</p>   

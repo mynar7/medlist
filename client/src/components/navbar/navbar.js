@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Link} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Bottle from "./bottle.png"
 import Inter from "./inter.png"
 import Cal from "./cal.png"
@@ -23,4 +23,4 @@ class Navbar extends Component {
 
     }
 }
-export default Navbar;
+export default withRouter(Navbar);

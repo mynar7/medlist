@@ -1,6 +1,6 @@
 import React, { Component} from "react";
-import {BrowserRouter as Router, Link} from 'react-router-dom';
-import Mglass from "./mglass.png"
+import { Link } from 'react-router-dom';
+import "./meditem.css";
 class Meditem extends Component {
     
     render() {
@@ -12,8 +12,10 @@ class Meditem extends Component {
                     <td>{this.props.meditem.generic_name}</td>
                     <td>
                         <Link to={`/meddetail/${this.props.meditem.id}/${this.props.meditem.openFDA_id}/${this.props.meditem.brand_name}`}>
-                            <div  className='meddetailsbtn' data_drug={this.props.meditem.id}>
-                            <img id="mglass" src={Mglass} alt="view" />more info/ dosages</div>
+                            <div  className='row x-center y-center div-to-btn meddetailsbtn' data_drug={this.props.meditem.id}>
+                                <span>Info and doses</span>
+                                <i class="fas fa-pills"></i>
+                            </div>
                         </Link>
                     </td>
                 </tr>   

@@ -1,0 +1,28 @@
+.app-header {
+    width: 100vw;
+    /* height: 100px; */
+    background: linear-gradient(115deg, white, var(--pblue) 20%);
+    color: white;
+}
+.app-header > span {
+    padding: 20px;
+}
+.app-header-logo {
+    margin-left: 20px;
+    margin-right: auto;
+    font-family: 'Arbutus Slab', cursive;
+}
+
+.app-header-logo-img {
+    height: 50px;
+    width: auto;
+    margin: 0 30px;
+}
+
+.app-header-logout-btn {
+    cursor: pointer;
+}
+
+.app-header-email, .app-header-log {
+    margin-right: 20px;
+}

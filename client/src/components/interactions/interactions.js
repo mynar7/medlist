@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from "axios";
-import styles from './interactions.css'
+import './interactions.css'
 
 class Interactions extends Component {
     constructor() {
@@ -16,7 +16,7 @@ class Interactions extends Component {
             console.log (res.data)
         })
         .catch( error=> {
-          throw (error);
+          this.props.history.push('/');
         });
     }
 
@@ -34,9 +34,9 @@ class Interactions extends Component {
     render() {
         let interactions;
         if (this.state.interactions.length > 0 ){ 
-            interactions = this.state.interactions.map(inter =>{
+            interactions = this.state.interactions.map((inter, index) =>{
             //console.log(med)
-            return (<div><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" >!</div>{inter.description} </div></div>)
+            return (<div key={index}><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" >!</div>{inter.description} </div></div>)
             })
         }
         return(

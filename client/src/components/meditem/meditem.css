@@ -1,0 +1,10 @@
+.meddetailsbtn {
+    background-color: var(--plavender);
+    color: var(--pwhite);
+  }
+
+  .meditem {
+    background-color: white; 
+    color: var(--pdarkgrey);
+    text-align: center;
+  }

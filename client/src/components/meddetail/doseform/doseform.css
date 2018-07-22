@@ -1,5 +1,30 @@
+.dose-form {
+    width: 200px;
+}
+
 .dose-form label {
     margin: 20px 0;
+}
+.dose-form input, .dose-form textarea, .dose-form select {
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid var(--pdarkgrey);
+    border-radius: 5px; 
+    resize: none;
+}
+
+.dose-form input:focus, .dose-form textarea:focus, .dose-form select:focus {
+    outline: none;
+    border: 1px solid var(--pblue);
+}
+
+.dose-form input, .dose-form textarea {
+    width: 100%;
+}
+
+.dose-form textarea {
+    height: 100px;
+    font-family: inherit;
 }
 
 .dose-form-time-label > input {

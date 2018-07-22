@@ -5,8 +5,3 @@
 .med-result-brand {
     text-align: center;
 }
-
-.med-result-brand > button {
-    margin: 0 10px;
-    border-radius: 20px;
-}

@@ -5,7 +5,6 @@ import $ from "axios";
 class Medlistcontainer extends Component {
     constructor() {
         super();
-    
         this.state = { meds: []};
     }
 
@@ -16,22 +15,8 @@ class Medlistcontainer extends Component {
             console.log (res)
         })
         .catch( error=> {
-          throw (error);
+            this.props.history.push('/');
         });
-    //     this.callApi()
-    //     .then(res => this.setState({ meds: res })
-        
-    //     )
-    //     .catch(err => console.log(err));
-    // }
-  
-    // callApi = async () => {
-    //     const response = await fetch('/api/allMeds');
-    //     const body = await response.json();
-    
-    //     if (response.status !== 200) throw Error(body.message);
-    //     console.log(body)
-    //     return body;
      };
 
     render() {

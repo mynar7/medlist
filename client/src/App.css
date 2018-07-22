@@ -6,22 +6,32 @@
   --pblue: #62B5E5;
   --plavender: #BF9BDE;
   --pgreen: #CFE89C;
-  --pwhite: #dddddd;
+  --pwhite: #fcfcfc;
 /* example how to reference:
   background-color: var(--pgreen) */
 }
 
-body {
-  padding-bottom: 200px;
+i {
+  font-size: 1.2em;
+  margin: 0 5px;
 }
+
+/* body {
+  padding-bottom: 200px;
+} */
 a {
   text-decoration: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: sticky;
+  top: 0;
+  /* left: 0;
+  bottom: 0; */
   width: 100%;
   background-color:var(--plightgrey);
   color: white;
@@ -70,33 +80,21 @@ a {
   color: var(--vdarkgrey)
 }
 
-.medtable{
-  width: 100%;
-  background-color: var(--plightgrey);
+#interactionmain{
+  background-color: white;
 }
 
-.meddetailsbtn {
-  background-color: var(--plavender);
-  color: var(--plightgrey);
-  border-radius: 10px;
-  padding: 2px;
-  margin: 3px;
-  width: 75%;
-  align-self: center;
-}
-#mglass{
-  vertical-align:middle;
-  margin: 3px;
+#interactionsheader{
+  margin-left: 20px;
+  color: var(--plavender)
 }
 
-.medlistkey {
-  text-align: center;
-  /* background-color: var(--plightgrey); */
-}
-
-.medlistkeyrow {
+.interaction{
   background-color: var(--pwhite);
   color: var(--pdarkgrey);
+  margin: 20px;
+  padding: 25px;
+  border-radius: 10px
 }
 
 #newmedlabel{
@@ -107,22 +105,9 @@ a {
   vertical-align:middle
 }
 
-.medlist{
-  background-color: var(--pwhite);
-  color: var(--plightgrey);
-}
-
-.meditem {
-  background-color: white; 
-  color: var(--pdarkgrey);
-  text-align: center;
-}
-
 .newmedbtn {
   background-color: var(--pgreen);
 }
 
-a:hover {
-cursor: pointer;
-}
+
 

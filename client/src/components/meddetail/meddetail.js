@@ -3,13 +3,15 @@ import $ from "axios";
 import Meddetailitem from './meddetailitem';
 import Doseform from './doseform';
 import Dosedetail from './dosedetail';
+import "./meddetail.css";
 
 class Meddetail extends Component {
 
     constructor() {
         super();
         this.state = { 
-            medInfo: []
+            medInfo: [],
+            deleteDialog: false
         };
     }
 
@@ -20,7 +22,7 @@ class Meddetail extends Component {
                         doses: res.data
                     })
                 })
-                .catch(err => console.log(err));
+                .catch(err => this.props.history.push('/'));
 
 
             $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
@@ -41,7 +43,7 @@ class Meddetail extends Component {
                     doses: res.data
                 })
             })
-            .catch(err => console.log(err));
+            .catch(err => this.props.history.push('/'));
     }
 
     deleteDose = doseId => {
@@ -50,15 +52,47 @@ class Meddetail extends Component {
         .catch(err => console.log(err));
     }
 
+    deleteMed = medId => {
+        $.delete(`/api/med/${medId}`)
+        .then(res => this.props.history.push('/medlistcontainer'))
+        .catch(err => console.log(err));
+    }
+
+    toggleDeleteDialog = () => {
+        if(this.state.deleteDialog) {
+            this.setState({ deleteDialog: false });
+        } else {
+            this.setState({ deleteDialog: true });
+        }
+    }
+
     render() {
         
         return (
 
             <div className="column y-center">
-                <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
+                <div className="row y-center">
+                    <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
+                    {
+                        !this.state.deleteDialog && 
+                        <div className="div-to-btn" onClick={this.toggleDeleteDialog}>Delete</div>
+                    }
+                </div>
+                {
+                    this.state.deleteDialog && 
+                    <div className="row x-center">
+                        Remove this drug from your list?
+                        <span className="div-to-btn" onClick={() => this.deleteMed(this.props.match.params.medId)}>
+                            Remove from List
+                        </span> 
+                        <span className="div-to-btn" onClick={this.toggleDeleteDialog}>
+                            Cancel
+                        </span>
+                    </div>
+                }
                 <div className="row split">
                     <Doseform medId={this.props.match.params.medId} update={this.updateDoses}/>
-                    <div className="column">
+                    <div className="column med-detail-doses">
                         {
                             this.state.doses &&
                             this.state.doses.map((x, i) => (

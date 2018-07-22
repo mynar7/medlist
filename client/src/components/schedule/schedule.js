@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import $ from 'axios';
-import styles from './schedule.css'
+import './schedule.css'
 
 class Schedule extends Component {
 
@@ -17,7 +17,7 @@ class Schedule extends Component {
             console.log (res.data)
         })
         .catch( error=> {
-          throw (error);
+            this.props.history.push('/');
         });       
     }
 
@@ -37,7 +37,7 @@ class Schedule extends Component {
        if (hour == 0) {
         newhour = 12
         designator = 'AM'
-       } else if (hour ==12){
+       } else if (hour == 12){
            newhour = 12
            designator = 'PM'
        } else if (hour > 12){
@@ -60,7 +60,7 @@ render() {
         sched = this.state.schedule.map(scheditem =>{
             let dose;
             dose = scheditem.meds.map(doseitem=>{
-            return(<div className="doseitem"><input type="checkbox" />{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
+            return(<div className="doseitem">{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
             } )
 
         return (<div> <div className="timeheader">{this.checkAMPM(scheditem.time)} </div><br />

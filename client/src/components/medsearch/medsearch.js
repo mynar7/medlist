@@ -15,14 +15,14 @@ class MedSearch extends Component {
             .then(res => {
                 this.setState({results: res.data});
             })
-            .catch(err => console.log(err));
+            .catch(err => this.props.history.push('/'));
         }
     }, 500);
 
     addMed = medObj => {
         $.post('/api/addmed', medObj)
         .then(res => {
-            this.props.history.push('/');
+            this.props.history.push(`/meddetail/${res.data[0].id}/${res.data[0].openFDA_id}/${res.data[0].brand_name}`);
         })
         .catch(err => console.log(err));
     }
