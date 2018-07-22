@@ -55,21 +55,27 @@ pharma = {
         queryString = baseURL + listString;
         $.get(queryString)
             .then(res => {
-                let interactionsArray = [];
+                let interactionsObj = [];
                 if (res.data.fullInteractionTypeGroup) {
+                    console.log(res.data.fullInteractionTypeGroup[0].fullInteractionType[0].interactionPair[0])
                     for (var i = 0; i < res.data.fullInteractionTypeGroup.length; i++) {
                         for (var j = 0; j < res.data.fullInteractionTypeGroup[i].fullInteractionType.length; j++) {
                             for (var k = 0; k < res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair.length; k++) {
+<<<<<<< HEAD
                                 let found = interactionsArray.find((x)=> x === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description);
                                 if(found === undefined) {
                                     interactionsArray.push(res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description);
                                 }
+=======
+                                interactionsObj.push({"description": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description,
+                                 "severity": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].severity})
+>>>>>>> bfe0cbbc71d2973f7bdee29e08531cb1c80d8c18
                             }
                         }
                     }
                 }
-
-                resolve(interactionsArray);
+                
+                resolve(interactionsObj);
             })
             .catch(error => {
                 //unsuccesful - declare error
