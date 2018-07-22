@@ -60,7 +60,10 @@ pharma = {
                     for (var i = 0; i < res.data.fullInteractionTypeGroup.length; i++) {
                         for (var j = 0; j < res.data.fullInteractionTypeGroup[i].fullInteractionType.length; j++) {
                             for (var k = 0; k < res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair.length; k++) {
-                                interactionsArray.push(res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description)
+                                let found = interactionsArray.find((x)=> x === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description);
+                                if(found === undefined) {
+                                    interactionsArray.push(res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description);
+                                }
                             }
                         }
                     }

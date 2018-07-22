@@ -203,7 +203,16 @@ router.get('/doses/:medId', checkAuth, (req, res) => {
         where: {
             MedId: req.params.medId
         }
-    }).then(result => res.json(result))
+    }).then(result => {
+        let sortedResults = result.sort((a, b) => {
+            let aTimeArr = a.time.split(":");
+            let bTimeArr = b.time.split(":");
+            let aHour = aTimeArr[0];
+            let bHour = bTimeArr[0];
+            return parseInt(aHour) - parseInt(bHour);
+        })
+        res.json(sortedResults)
+    })
     .catch(err => res.json(err));
 });
 
