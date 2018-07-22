@@ -5,6 +5,10 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
 .row, .column {
   display: flex;
   flex-wrap: wrap;

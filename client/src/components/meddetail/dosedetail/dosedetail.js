@@ -25,8 +25,9 @@ const Dosedetail = props => {
             <button onClick={props.delete}>Delete</button>
         </div>
         <div className="row dose-detail-container">
-            <div className="dose-detail">Note: {props.note}</div>
+            {props.note && <div className="dose-detail">Note: {props.note}</div>}
         </div>
+        <hr/>
     </div>
     )
 };

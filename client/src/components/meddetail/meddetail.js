@@ -3,6 +3,7 @@ import $ from "axios";
 import Meddetailitem from './meddetailitem';
 import Doseform from './doseform';
 import Dosedetail from './dosedetail';
+import "./meddetail.css";
 
 class Meddetail extends Component {
 
@@ -58,7 +59,7 @@ class Meddetail extends Component {
                 <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
                 <div className="row split">
                     <Doseform medId={this.props.match.params.medId} update={this.updateDoses}/>
-                    <div className="column">
+                    <div className="column med-detail-doses">
                         {
                             this.state.doses &&
                             this.state.doses.map((x, i) => (

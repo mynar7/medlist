@@ -10,13 +10,15 @@ class Header extends Component {
     render() {
         return (
             <header className='app-header row y-center'>
-                <span className="app-header-logo">My Meds</span>
+                <Link className="app-header-logo" to="/"><h1>My Meds</h1></Link>
                 {
-                    this.props.isAuth ?
-                    <span>Welcome, {this.props.email}! 
-                        <a href="http://localhost:3001/auth/logout">Logout?</a> 
-                    </span> :
-                    <a href="http://localhost:3001/auth/google">Login!</a>
+                    this.props.isAuth &&
+                    <div className="row">
+                        <span className="app-header-email">
+                            Welcome, {this.props.email}! 
+                        </span>
+                        <a className="app-header-log" href="http://localhost:3001/auth/logout">Logout?</a>
+                    </div>
                 }
             </header>
         )

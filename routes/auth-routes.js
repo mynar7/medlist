@@ -3,7 +3,7 @@ const passport = require('passport');
 
 router.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/");
+    res.clearCookie("process.env.COOKIE_NAME").redirect("/");
 });
 
 router.get('/google', passport.authenticate('google', {

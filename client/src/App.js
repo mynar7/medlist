@@ -52,15 +52,14 @@ class App extends Component {
   }
 
   render() {
-    console.log("render");
-    console.log(this.state.isAuth);
+    console.log(this.props.history.location.pathname);
     return ( 
       <div className="App">
       <Header isAuth={this.state.isAuth} 
         email={this.state.email} 
         logout={this.logout}
         login={this.login}/> 
-        {this.state.isAuth &&
+        {this.state.isAuth && this.props.history.location.pathname !== '/' &&
         <Navbar />} 
         <Switch>
           <Route path = "/" render={(props) => <Homelogin {...props} isAuth={this.state.isAuth} />} exact />
