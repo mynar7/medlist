@@ -80,7 +80,6 @@ a:hover {
   color: var(--vdarkgrey)
 }
 
-<<<<<<< HEAD
 #interactionmain{
   background-color: white;
 }
@@ -96,35 +95,6 @@ a:hover {
   margin: 20px;
   padding: 25px;
   border-radius: 10px
-=======
-.medtable{
-  width: 100%;
-  background-color: var(--plightgrey);
-}
-
-.meddetailsbtn {
-  background-color: var(--plavender);
-  color: var(--plightgrey);
-  border-radius: 10px;
-  padding: 2px;
-  margin: 3px;
-  width: 75%;
-  align-self: center;
-}
-#mglass{
-  vertical-align:middle;
-  margin: 3px;
-}
-
-.medlistkey {
-  text-align: center;
-  /* background-color: var(--plightgrey); */
-}
-
-.medlistkeyrow {
-  background-color: var(--pwhite);
-  color: var(--pdarkgrey);
->>>>>>> bfe0cbbc71d2973f7bdee29e08531cb1c80d8c18
 }
 
 #newmedlabel{
