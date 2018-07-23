@@ -49,7 +49,12 @@ a:hover {
 }
 
 .meddetailitemtext{
-  color: var(--pdarkgrey)
+  color: var(--vdarkgrey)
+}
+
+
+#newmedlabel{
+  color: var(--plavender);
 }
 
 
