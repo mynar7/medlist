@@ -80,22 +80,6 @@ a:hover {
   color: var(--vdarkgrey)
 }
 
-#interactionmain{
-  background-color: white;
-}
-
-#interactionsheader{
-  margin-left: 20px;
-  color: var(--plavender)
-}
-
-.interaction{
-  background-color: var(--pwhite);
-  color: var(--pdarkgrey);
-  margin: 20px;
-  padding: 25px;
-  border-radius: 10px
-}
 
 #newmedlabel{
   color: var(--plavender);

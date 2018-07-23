@@ -1,4 +1,7 @@
+// const router = require('express').Router(); //*******************************
+// const app = express(); //***********************************
 const $ = require('axios');
+const db = require('../models');
 // const drugNoInter = [8591, 151827, 6809, 221124];
 // const drugInter = ["207106", "152923", "656659"]
 // const leetest = [196503,202813]
@@ -63,8 +66,14 @@ pharma = {
                             for (var k = 0; k < res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair.length; k++) {
                                 let found = interactionsObj.find(x => x.description === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description );
                                 if(!found) {
+                                    // ********************************************
+
+                                    // ********************************************
                                     interactionsObj.push({"description": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description,
-                                    "severity": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].severity})
+                                    "severity": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].severity,
+                                    "source": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].interactionConcept
+                                })
+
                                 }
                             }
                         }

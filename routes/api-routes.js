@@ -13,6 +13,7 @@ function checkAuth(req, res, next) {
     }
 }
 
+
 //test route: check auth
 router.get('/test', checkAuth, (req, res) => {
     res.json(req.user);
