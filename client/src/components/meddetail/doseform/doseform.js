@@ -68,7 +68,6 @@ class Doseform extends Component {
     render() {
         return (
             <div className="column dose-form">
-                {this.state.error && this.state.error.map((x, i) => <p key={i}>{x}</p>)}
                 <form className="column y-center">
                     <span>Amount: </span>
                     <input type="text" 
@@ -94,6 +93,7 @@ class Doseform extends Component {
                             autoComplete="off"
                             name="note" 
                             onChange={this.update} />
+                    {this.state.error && this.state.error.map((x, i) => <p key={i}>{x}</p>)}
                     <div className="div-to-btn" onClick={this.submit}>Submit</div>
                 </form>
             </div>

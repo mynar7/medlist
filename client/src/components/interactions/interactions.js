@@ -55,11 +55,7 @@ class Interactions extends Component {
                     <Intermedlist />
                 </div>
                 {interactions}
-                <div className="disclaimer"><b>Disclaimer:</b> It is not our intention to provide 
-                specific medical advice, but rather to provide users with 
-                information to better understand their health and their medications. 
-                We urge you to consult with a qualified physician for advice about 
-                medications.</div>
+                
             </div>
         )
 
