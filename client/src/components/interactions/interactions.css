@@ -1,6 +1,6 @@
-#interactionmain{
+/* #interactionmain {
     background-color: white;
-  }
+} */
 
   .container{
     display: flex;
@@ -53,19 +53,17 @@
       text-align: center;
   }
 
-  .explanation {
-    margin: 15px;
-    padding: 5px;
-    width: 50%;
-    color: var(--pdarkgrey);
+.explanation {
+  margin: 15px;
+  padding: 5px;
+  width: 50%;
+  color: var(--pdarkgrey);
+}
 
-  }
-
-  .disclaimer{
-    margin: 15px;
-    padding: 5px;
-    width: 50%;
-    color: var(--pdarkgrey);
-
-  }
+.disclaimer {
+  margin: 15px;
+  padding: 5px;
+  width: 50%;
+  color: var(--pdarkgrey);
+}
 

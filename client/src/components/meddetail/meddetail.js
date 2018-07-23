@@ -16,24 +16,25 @@ class Meddetail extends Component {
     }
 
     componentDidMount(){
-            $.get(`/api/doses/${this.props.match.params.medId}`)
-                .then(res => {
-                    this.setState({
-                        doses: res.data
-                    })
+        window.scrollTo(0, 0);
+        $.get(`/api/doses/${this.props.match.params.medId}`)
+            .then(res => {
+                this.setState({
+                    doses: res.data
                 })
-                .catch(err => this.props.history.push('/'));
+            })
+            .catch(err => this.props.history.push('/'));
 
 
-            $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
-                .then( res=> {
-                    this.setState({
-                        medInfo: Object.entries(res.data)
-                    });
-                })
-                .catch( error=> {
-                console.log(error);
-                });       
+        $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
+            .then( res=> {
+                this.setState({
+                    medInfo: Object.entries(res.data)
+                });
+            })
+            .catch( error=> {
+            console.log(error);
+            });       
     }
 
     updateDoses = () => {

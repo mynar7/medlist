@@ -1,0 +1,20 @@
+.meditem>hr {
+  width: 100%;
+}
+.meditem-number {
+  margin: 0 10px;
+  align-self: flex-start;
+}
+.meddetailsbtn {
+  background-color: var(--plavender);
+  color: var(--pwhite);
+}
+
+.meditem-row {
+  color: var(--pdarkgrey);
+  margin: 15px 0;
+}
+
+.meditem-col {
+  width: 300px;
+}

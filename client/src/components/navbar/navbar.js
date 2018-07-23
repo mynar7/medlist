@@ -1,21 +1,34 @@
 import React, {Component} from "react";
 import { Link, withRouter } from 'react-router-dom'
-import Bottle from "./bottle.png"
-import Inter from "./inter.png"
-import Cal from "./cal.png"
+import "./navbar.css"
 
 class Navbar extends Component {
 
     render() {
 
     return(
-        <div className="footer">
+        <div className="navbar">
         
-        <Link to={"/medlistcontainer/"}><div className='navbutton'><img className="navpic" src={Bottle} alt="bottle" />Med List</div></Link>
+        <Link to={"/medlistcontainer/"}>
+            <div className='navbutton'>
+                <i className="fas fa-prescription-bottle-alt"></i>
+                Med List
+            </div>
+        </Link>
         
-        <Link to={"/interactionsview/"}><div className='navbutton'><img className="navpic" src={Inter} alt="Inter" />Interactions</div></Link>
+        <Link to={"/interactionsview/"}>
+            <div className='navbutton'>
+                <i className="fas fa-sync-alt"></i>
+                Interactions
+            </div>
+        </Link>
         
-        <Link to={"/scheduleview/"}><div className='navbutton'><img className="navpic" src={Cal} alt="Cal" />Schedule</div></Link>
+        <Link to={"/scheduleview/"}>
+            <div className='navbutton'>
+                <i className="far fa-clock"></i>
+                Schedule
+            </div>
+        </Link>
             
         </div>
     )

@@ -1,3 +1,17 @@
 .med-search-bar {
     margin: 20px 0;
 }
+
+.med-search-bar input {
+    font-family: inherit;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid var(--plightgrey);
+    border-radius: 5px; 
+    resize: none;
+}
+
+.med-search-bar input:focus {
+    outline: none;
+    border: 1px solid var(--pblue);
+}

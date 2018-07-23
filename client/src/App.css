@@ -1,7 +1,7 @@
 :root {
   /* color palette */
   --pblack: #333333;
-  --pdarkgrey: #707070;
+  --pdarkgrey: #636363;
   --plightgrey: #EDECE8;
   --pblue: #62B5E5;
   --plavender: #BF9BDE;
@@ -10,55 +10,27 @@
 /* example how to reference:
   background-color: var(--pgreen) */
 }
+body {
+  color: var(--pdarkgrey);
+  background-color: var(--pwhite);
+  box-sizing: border-box;
+}
+
+input, textarea, select, option {
+  background-color: var(--pwhite);
+}
 
 i {
   font-size: 1.2em;
   margin: 0 5px;
 }
 
-/* body {
-  padding-bottom: 200px;
-} */
 a {
   text-decoration: none;
 }
 
 a:hover {
   cursor: pointer;
-}
-
-.footer {
-  position: sticky;
-  top: 0;
-  /* left: 0;
-  bottom: 0; */
-  width: 100%;
-  background-color:var(--plightgrey);
-  color: white;
-  text-align: center;
-}
-
-.navbutton {
-  background-color: white;
-  display: inline-block;
-  margin: 15px;
-  border-radius: 10px;
-  padding: 6px;
-  color: var(--pdarkgrey)
-}
-
-.navpic {
-  vertical-align:middle;
-  margin: 3px;
-}
-
-#headertitle {
-  color: var(--plightgrey);
-}
-
-.Header {
-  background-color: var(--pblue);
-  width: 100%;
 }
 
 .meddetaildrugtitle{
@@ -85,13 +57,7 @@ a:hover {
   color: var(--plavender);
 }
 
-#addmedbutton{
-  vertical-align:middle
-}
 
-.newmedbtn {
-  background-color: var(--pgreen);
-}
 
 
 
