@@ -9,7 +9,7 @@ class Homelogin extends Component {
             {
                 this.props.isAuth ?
                 <Link to="/medlistcontainer"><h1>dashboard</h1></Link> :
-                <a className="" href="http://localhost:3001/auth/google">
+                <a className="" href="https://my-med-list.herokuapp.com/auth/google">
                     <h1>Login!</h1>
                 </a>
             }

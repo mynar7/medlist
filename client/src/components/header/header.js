@@ -18,7 +18,7 @@ class Header extends Component {
                         <span className="app-header-email">
                             Welcome, {this.props.email}! 
                         </span>
-                        <a className="app-header-log" href="http://localhost:3001/auth/logout">Logout?</a>
+                        <a className="app-header-log" href="https://my-med-list.herokuapp.com/auth/logout">Logout?</a>
                     </div>
                 }
             </header>
