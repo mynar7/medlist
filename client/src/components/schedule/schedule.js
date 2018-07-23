@@ -34,10 +34,10 @@ class Schedule extends Component {
        let minute = value.slice(cut+1,value.length)
        let newhour;
        let designator
-       if (hour == 0) {
+       if (hour === 0) {
         newhour = 12
         designator = 'AM'
-       } else if (hour == 12){
+       } else if (hour === 12){
            newhour = 12
            designator = 'PM'
        } else if (hour > 12){

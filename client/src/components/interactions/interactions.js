@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from "axios";
 import './interactions.css'
-
+import Intermedlist from './intermedlist'
 class Interactions extends Component {
     constructor() {
         super();
@@ -36,16 +36,23 @@ class Interactions extends Component {
         if (this.state.interactions.length > 0 ){ 
             interactions = this.state.interactions.map((inter, index) =>{
             //console.log(med)
-            return (<div key={index}><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" >!</div>{inter.description} </div></div>)
+            let medString = "| "
+            let drugnames = inter.source.map(med =>{
+                medString += med.minConceptItem.name + " | "
+            })
+            return (<div className="interactionunit" key={index}><div className="tab">{medString}</div><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" >!</div>{inter.description} </div></div>)
             })
         }
         return(
             <div id="interactionmain">
 
                 <h1 id="interactionsheader">Interactions</h1>
-                <div className="explanation">This is a list of potential interactions based on the list of meds you have provided.
-                    These interactions do not consider dosages or other factors, but can serve as the basis for further
-                    discussions with your health care providers
+                <div className="container">
+                    <div className="explanation"><h2>Instructions:</h2>This is a list of potential interactions based on the list of meds you have provided.
+                        These interactions do not consider dosages or other factors, but can serve as the basis for further
+                        discussions with your health care providers.
+                    </div>
+                    <Intermedlist />
                 </div>
                 {interactions}
                 <div className="disclaimer"><b>Disclaimer:</b> It is not our intention to provide 

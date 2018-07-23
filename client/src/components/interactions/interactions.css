@@ -2,16 +2,41 @@
     background-color: white;
   }
 
+  .container{
+    display: flex;
+    flex-direction: row
+  }
+
 #interactionsheader{
     margin-left: 20px;
-    color: var(--plavender)
+     color: var(--plavender)
+  }
+
+  .interactionunit{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    width: 90%;
+  }
+  .tab {
+    background-color: var(--plightgrey);
+    color: var(--pdarkgrey);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    width:40%;
   }
   
   .interaction{
-    background-color: #ffffff;
+    background-color: white;
+    border-style: solid;
+    border-width: 1;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-color: var(--plightgrey);
     color: var(--pdarkgrey);
-    margin: 5px;
-    padding: 2px;
+    padding: 5px;
     border-radius: 2px;
     display: inline-block;
     width: 100%;
