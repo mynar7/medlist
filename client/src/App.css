@@ -11,6 +11,7 @@
   background-color: var(--pgreen) */
 }
 body {
+  color: var(--pdarkgrey);
   background-color: var(--pwhite);
   box-sizing: border-box;
 }

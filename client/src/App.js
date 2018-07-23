@@ -8,6 +8,7 @@ import Navbar from './components/navbar';
 import MedSearch from './components/medsearch';
 import Schedule from './components/schedule';
 import Homelogin from './components/homelogin';
+import Appfooter from './components/appfooter';
 
 import './App.css';
 import Header from './components/header'
@@ -69,6 +70,7 @@ class App extends Component {
           <Route path = "/scheduleview" component={Schedule} exact />
           <Route path = "/search" component={MedSearch} exact />
         </Switch>
+        <Appfooter/>
       </div>
     );
   }
