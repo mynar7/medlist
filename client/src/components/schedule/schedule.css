@@ -1,18 +1,28 @@
+.schedule {
+    max-width: 50vw;
+}
+
 .scheduleheader {
     color: var(--plavender);
     margin-left: 10px;
+    text-align: center;
 }
 
 .timeheader {
     background-color: var(--pdarkgrey);
+    border-radius: 8px;
     color: white;
-    width: 100%;
-    padding: 10px;
+    width: 50vw;
+    min-width: 300px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
+.timeheader-time {
+    padding: 10px 20px;
+}
+
 .doseitem{
-    padding: 10px;
+    margin: 10px 0px 10px 40px;
     color: (var(--pdarkGrey))
 }

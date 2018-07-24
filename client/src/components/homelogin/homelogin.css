@@ -1,0 +1,14 @@
+.home-jumbotron {
+    height: 50vw;
+    width: 100%;
+    background-size: cover;
+    background-position-y: 40%;
+    background-position-x: center;
+    color: var(--pwhite);
+}
+
+.home-jumbo-attn {
+    font-family: 'Arbutus Slab', cursive;
+    font-size: 6vw;
+    margin: 4vw;
+}

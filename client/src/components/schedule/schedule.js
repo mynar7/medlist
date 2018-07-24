@@ -34,10 +34,10 @@ class Schedule extends Component {
        let minute = value.slice(cut+1,value.length)
        let newhour;
        let designator
-       if (hour === 0) {
+       if (hour == 0) {
         newhour = 12
         designator = 'AM'
-       } else if (hour === 12){
+       } else if (hour == 12){
            newhour = 12
            designator = 'PM'
        } else if (hour > 12){
@@ -57,26 +57,37 @@ render() {
     
     let sched;
     if (this.state.schedule.length > 0 ){ 
-        sched = this.state.schedule.map(scheditem =>{
+       sched = this.state.schedule.map((scheditem, schedIndex) =>{
             let dose;
-            dose = scheditem.meds.map(doseitem=>{
-            return(<div className="doseitem">{doseitem.med.brand_name} {doseitem.dose} {this.checkfornotes(doseitem.note)}</div>)
+            dose = scheditem.meds.map((doseitem, doseIndex)=>{
+            return(<div className="doseitem row" key={doseIndex}>
+                    <span>
+                    ● {doseitem.med.brand_name} - {doseitem.dose} 
+                    </span>
+                    <span>
+                        {this.checkfornotes(doseitem.note)}
+                    </span>
+                </div>)
             } )
 
-        return (<div> <div className="timeheader">{this.checkAMPM(scheditem.time)} </div><br />
-        {dose}
-        </div>)
-
+        return  (<div className="column" key={schedIndex}> 
+                    <div className="row timeheader">
+                        <span className="timeheader-time">
+                            {this.checkAMPM(scheditem.time)}
+                        </span>
+                    </div>
+                    {dose}
+                </div>)
         })
     }
 
 
     return(
-    <div>
-        <h1 className="scheduleheader">Schedule of dosages</h1>
-        {sched}
-
-
+    <div className="column y-center">
+        <div className="schedule">
+            <h1 className="scheduleheader">Dosage Schedule</h1>
+            {sched}
+        </div>
     </div>
     )
 
