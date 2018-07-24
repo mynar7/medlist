@@ -1,10 +1,10 @@
 .schedule {
     max-width: 50vw;
+    min-width: 300px;
 }
 
 .scheduleheader {
     color: var(--plavender);
-    margin-left: 10px;
     text-align: center;
 }
 
@@ -12,8 +12,6 @@
     background-color: var(--pdarkgrey);
     border-radius: 8px;
     color: white;
-    width: 50vw;
-    min-width: 300px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
