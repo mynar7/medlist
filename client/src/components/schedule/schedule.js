@@ -14,7 +14,6 @@ class Schedule extends Component {
         $.get("/api/schedule/")
         .then( res=> {
             this.setState({schedule: res.data});
-            console.log (res.data)
         })
         .catch( error=> {
             this.props.history.push('/');
