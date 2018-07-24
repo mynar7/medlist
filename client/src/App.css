@@ -10,11 +10,6 @@
 /* example how to reference:
   background-color: var(--pgreen) */
 }
-body {
-  color: var(--pdarkgrey);
-  background-color: var(--pwhite);
-  box-sizing: border-box;
-}
 
 input, textarea, select, option {
   background-color: var(--pwhite);

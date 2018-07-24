@@ -12,24 +12,29 @@ class Navbar extends Component {
         <Link to={"/medlistcontainer/"}>
             <div className='navbutton'>
                 <i className="fas fa-prescription-bottle-alt"></i>
-                Med List
+                <b>Med List</b>
             </div>
         </Link>
-        
+        <Link to="/search">
+            <div className="navbutton">
+                <i className="fas fa-plus"></i>
+                <b>New Med</b>
+            </div>
+        </Link>
         <Link to={"/interactionsview/"}>
             <div className='navbutton'>
                 <i className="fas fa-sync-alt"></i>
-                Interactions
+                <b>Interactions</b>
             </div>
         </Link>
         
         <Link to={"/scheduleview/"}>
             <div className='navbutton'>
                 <i className="far fa-clock"></i>
-                Schedule
+                <b>Schedule</b>
             </div>
         </Link>
-            
+        
         </div>
     )
 

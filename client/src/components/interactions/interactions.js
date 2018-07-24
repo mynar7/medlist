@@ -57,24 +57,20 @@ class Interactions extends Component {
             })
         }
         return(
-            <div id="interactionmain">
+            <div className="interactionmain column y-center">
 
                 <h1 id="interactionsheader">Interactions</h1>
-                <div className="row split">
+                <div className="row split interaction-jumbo">
+                    <Intermedlist />
                     <div className="explanation"><h2>Instructions:</h2>This is a list of potential interactions based on the list of meds you have provided.
                         These interactions do not consider dosages or other factors, but can serve as the basis for further
                         discussions with your health care providers.
                         {/* <div>{this.totali}</div> */}
                     </div>
                     {/* <Interactionlegend inter={this.state.interactions}/> */}
-                    <Intermedlist />
                 </div>
                 {interactions}
-                <div className="disclaimer"><b>Disclaimer:</b> It is not our intention to provide 
-                specific medical advice, but rather to provide users with 
-                information to better understand their health and their medications. 
-                We urge you to consult with a qualified physician for advice about 
-                medications.</div>
+                
             </div>
         )
 

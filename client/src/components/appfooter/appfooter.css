@@ -1,0 +1,10 @@
+.appfooter {
+    margin-top: 100px;
+    background-color: var(--plightgrey);
+}
+
+.appfooter-disclaimer {
+    margin: 40px;
+    font-size: 0.8em;
+    max-width: 70vw;
+}

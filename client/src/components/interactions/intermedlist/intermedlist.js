@@ -24,12 +24,12 @@ class Intermedlist extends Component {
         let meds;
         if (this.state.meds.length > 0 ){ 
             meds = this.state.meds.map(med =>{
-            return (<li className="listitem"key={med.id}>{med.brand_name} </li>)
+            return (<li className="listitem" key={med.id}>{med.brand_name} </li>)
             })
         }
         
         return (
-            <div className="MedList"><ul><h2 className="header">Your medications:</h2> {meds}</ul></div>
+            <div><ul><h2 className="header">Your medications:</h2> {meds}</ul></div>
         )
     }
 }

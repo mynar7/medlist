@@ -6,7 +6,7 @@
     font-family: inherit;
     margin: 10px 0;
     padding: 8px;
-    border: 1px solid var(--plightgrey);
+    border: 1px solid var(--pdarkgrey);
     border-radius: 5px; 
     resize: none;
 }
