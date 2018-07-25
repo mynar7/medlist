@@ -42,7 +42,7 @@ class Homelogin extends Component {
                                 <p className="home-main-row-loglink"><u>Click Here to go to your Med List</u></p>
                             </Link> 
                             <p>
-                                Or, you can click here to <a className="home-main-row-loglink" href="https://my-med-list.herokuapp.com/auth/google">
+                                Or, you can click here to <a className="home-main-row-loglink" href="https://my-med-list.herokuapp.com/auth/logout">
                                     <u>Logout</u>
                                     </a>
                             </p>
