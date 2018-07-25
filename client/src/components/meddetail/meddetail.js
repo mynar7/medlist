@@ -72,7 +72,7 @@ class Meddetail extends Component {
         return (
 
             <div className="column y-center">
-                <div className="row y-center">
+                <div className="row x-center y-center meddetail-header">
                     <h1 className="meddetaildrugtitle">{this.props.match.params.brandname}</h1>
                     {
                         !this.state.deleteDialog && 
@@ -91,22 +91,36 @@ class Meddetail extends Component {
                         </span>
                     </div>
                 }
-                <div className="row split">
-                    <Doseform medId={this.props.match.params.medId} update={this.updateDoses}/>
-                    <div className="column med-detail-doses">
-                        {
-                            this.state.doses &&
-                            this.state.doses.map((x, i) => (
-                                <Dosedetail key={i}
-                                delete={() => this.deleteDose(x.id)}
-                                note={x.note}
-                                dose={x.dose}
-                                time={x.time}/>
-                            ))
-                        }
+                <div className="row split med-detail-formdose-wrapper">
+                    <div className="columm med-detail-formdose-col">
+                        <h2 className="text-center">Add a Dose</h2>
+                        <Doseform medId={this.props.match.params.medId} update={this.updateDoses}/>
+                    </div>
+                    <div className="column med-detail-formdose-col">
+                        <div className="column med-detail-doses">
+                            {
+                                this.state.doses && this.state.doses.length > 0 ?
+                                <div>
+                                    <h2 className="text-center">Your Doses</h2>
+                                    {this.state.doses.map((x, i) => (
+                                        <Dosedetail key={i}
+                                        delete={() => this.deleteDose(x.id)}
+                                        note={x.note}
+                                        dose={x.dose}
+                                        time={x.time}/>
+                                    ))}
+                                </div> :
+                                <div className="meddetail-exp">
+                                    <h3>Your Scheduled Doses will appear here.</h3>
+                                    <p>Use the form to add some dosages and times.</p>
+                                    <p>Time must be entered in this format "X:XX" or "XX:XX". For Example: "8:00" or "12:00".
+                                    </p>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
-                <h1 className="meddetaildrugtitle">
+                <h1 className="meddetaildrugtitle text-center">
                     Label Info for {this.props.match.params.brandname}:
                 </h1>
                 <div>

@@ -1,25 +1,33 @@
 .navbar {
     position: sticky;
     top: 0;
-    /* left: 0;
-    bottom: 0; */
-    width: 100%;
+    width: 100vw;
     background-color:var(--plightgrey);
     color: white;
-    text-align: center;
-  }
+    /* text-align: center; */
+}
   
-  .navbutton {
-    background-color: white;
+.navbutton {
+    background-color: var(--pwhite);
     display: inline-block;
-    margin: 15px;
+    margin: 15px 0;
     border-radius: 10px;
     padding: 6px;
-    color: var(--pdarkgrey)
-  }
-  
-  .navpic {
-    vertical-align:middle;
-    margin: 3px;
-  }
+    color: var(--pdarkgrey);
+    text-align: center;
+}
 
+.navbar-twobtn-grp {
+    width: 50%;
+    min-width: 150px;
+}
+
+@media screen and (max-width: 550px) {
+    .navbutton {
+      background-color: var(--plightgrey);
+      margin: 5px 0px;
+      padding: 0;
+      width: 48vw;
+    }
+
+}

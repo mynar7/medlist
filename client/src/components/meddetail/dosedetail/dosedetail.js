@@ -19,14 +19,14 @@ const Dosedetail = props => {
     }
     return (
     <div>
-        <div className="row dose-detail-container">
-            <div className="dose-detail">Dose: {props.dose}</div>
-            <div className="dose-detail">Time: {`${hours}:${minutes} ${ampm}`}</div>
-            <div className="div-to-btn" onClick={props.delete}>Delete</div>
-        </div>
-        <div className="row dose-detail-container">
-            {props.note && <div className="dose-detail">Note: {props.note}</div>}
-        </div>
+            <div className="row split dose-detail-container">
+                <div className="dose-detail">Dose: {props.dose}</div>
+                <div className="dose-detail">Time: {`${hours}:${minutes} ${ampm}`}</div>
+                <div className="div-to-btn dose-detail-delete" onClick={props.delete}>Delete</div>
+                <div className="dose-detail-note">
+                    {props.note && <span>Note: {props.note}</span>}
+                </div>
+            </div>
         <hr/>
     </div>
     )

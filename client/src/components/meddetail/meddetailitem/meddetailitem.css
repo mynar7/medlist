@@ -1,0 +1,21 @@
+.meddetaildrugtitle{
+    color: var(--pdarkgrey);
+    margin: 0 20px
+}
+
+.meddetailitem{
+    margin: auto;
+    width: 75vw;
+    min-width: 280px;
+    margin-bottom: 10px;
+    /* padding: 20px; */
+}
+
+.meddetailitemtitle{
+    color: var(--plavender);
+}
+
+.meddetailitemtext{
+    color: var(--vdarkgrey)
+}
+

@@ -1,8 +1,34 @@
 .dose-detail-container {
     margin: 20px 0;
-    width: 100%;
+    width: 550px;
 }
 
 .dose-detail {
-    width: 300px;
+    width: 25%;
+    margin: 5px 20px;
+}
+
+.dose-detail-note {
+    width: 100%;
+    margin: 5px 20px 10px;
+}
+
+.dose-detail-delete {
+    margin-left: auto;
+    height: 30px;
+}
+
+@media screen and (max-width: 550px) {
+    .dose-detail-container {
+        width: 80vw;
+    }
+
+    .dose-detail {
+        width: 100%;
+    }
+
+    .dose-detail-delete {
+        margin: 0 auto;
+        order: 4;
+    }
 }

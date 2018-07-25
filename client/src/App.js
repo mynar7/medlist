@@ -29,7 +29,6 @@ class App extends Component {
   testAuth = () => {
     $.get('/api/test')
     .then(res => {
-      console.log(res.data);
       this.setState({ 
         isAuth: true,
         email:  res.data.email
@@ -38,18 +37,6 @@ class App extends Component {
     .catch(err => this.setState({
         isAuth: false
     }))
-  }
-
-  login = () => {
-    $.get("/auth/google")
-    .then(res => this.testAuth())
-    .catch(err => console.log(err));
-  }
-
-  logout = () => {
-    $.get("/auth/logout")
-    .then(res => this.props.history.push('/'))
-    .catch(err => console.log(err));
   }
 
   render() {
@@ -62,7 +49,9 @@ class App extends Component {
         {this.state.isAuth && this.props.history.location.pathname !== '/' &&
         <Navbar />} 
         <Switch>
-          <Route path = "/" render={(props) => <Homelogin {...props} isAuth={this.state.isAuth} />} exact />
+          <Route path = "/" 
+            render={(props) => <Homelogin {...props} isAuth={this.state.isAuth} email={this.state.email}/>} 
+            exact />
           <Route path = "/medlistcontainer" component={Medlistcontainer} exact />
           <Route path = "/meddetail/:medId/:FDAId/:brandname" component={Meddetail} exact />
           <Route path = "/interactionsview" component={Interactions} exact />

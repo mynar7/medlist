@@ -60,6 +60,12 @@ class Doseform extends Component {
             $.post(`/api/addDose/${this.props.medId}`, data)
             .then(res => {
                 this.props.update();
+                this.setState({
+                    amount: "",
+                    ampm: "am",
+                    time: "",
+                    note: ""
+                })
             })
             .catch(err => console.log(err))
         }

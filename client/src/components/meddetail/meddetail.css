@@ -2,3 +2,28 @@
     margin-left: 20px;
 }
 
+
+
+.meddetail-exp {
+    width: 300px;
+    margin: 0 30px;
+}
+
+.med-detail-formdose-wrapper {
+    width: 80vw;
+    margin: 50px 0;
+}
+
+.med-detail-formdose-col {
+    margin-bottom: 50px;
+}
+
+.meddetail-header {
+    margin: 50px 0 20px;
+}
+
+@media screen and (max-width: 550px) {
+    .meddetail-header, .meddetaildrugtitle {
+        font-size: 1.1em;
+    }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./meddetailitem.css";
 
 
 class Meddetail extends Component {

@@ -32,9 +32,9 @@ class MedSearch extends Component {
             <div className="column y-center">
                 {
                     this.state.results.length === 0 &&
-                    <h1>Start Typing to Search for a med</h1>
+                    <h1 className="text-center">Start Typing to Search for a medication</h1>
                 }
-                <div className="row x-center med-search-bar">
+                <div className="row x-center text-center med-search-bar">
                     <label htmlFor="med-search-bar">
                         <span>Search for a medication: </span>
                         <input type="text" 
@@ -48,7 +48,7 @@ class MedSearch extends Component {
                         />
                     </label>
                 </div>
-                <div className="column search-results">
+                <div className="column search-results text-center">
                 {
                     (this.state.results.length > 0) &&
                     this.state.results.map(x => (

@@ -26,3 +26,9 @@
 .app-header-email, .app-header-log {
     margin-right: 20px;
 }
+
+@media screen and (max-width: 769px) {
+    .app-header-email, .app-header-log {
+        display: none;
+    }
+}

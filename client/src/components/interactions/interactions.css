@@ -9,14 +9,15 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     padding: 5px;
-    padding-left: 10px;
-    width:40%;
-    min-width: 250px;
+    /* padding-left: 10px; */
+    width: 50%;
+    /* min-width: 250px; */
   }
 
   .interactionunit {
     width: 80vw;
-    margin: 10px 0;
+    min-width: 260px;
+    margin: 35px auto;
   }
 
   .interaction{
@@ -28,9 +29,9 @@
     border-bottom-left-radius: 5px;
     border-color: var(--plightgrey);
     color: var(--pdarkgrey);
-    padding: 5px;
+    padding: 15px 5px;
     border-radius: 2px;
-    display: inline-block;
+    /* display: inline-block; */
     width: 100%;
   }
 
@@ -50,9 +51,16 @@
   }
 
 .explanation {
-  /* margin: 15px; */
-  padding: 5px;
   width: 300px;
   color: var(--pdarkgrey);
 }
 
+.inter-warning {
+  color: var(--pred);
+}
+
+@media screen and (max-width: 650px) {
+    .tab {
+        width: 101.5%;
+    }
+}

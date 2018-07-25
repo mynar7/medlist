@@ -12,22 +12,13 @@ class Interactions extends Component {
 
     componentDidMount() {
         $.get('/api/interactions')
-        .then( res=> {
-            // let values = res.data.reduce((accumulator, interaction) =>{
-                
-            //     accumulator.i++;
-            //     if(interaction.severity ==='high'){
-            //         accumulator.r++;
-            //     }
-            //     else if (interaction.severity === "N/A"){
-            //         accumulator.g++;
-            //     }else{
-            //         accumulator.y++;
-            //     } 
-            // }, { i:0 , g:0, y:0, r:0})
-            this.setState({interactions: res.data});
-             
-             
+        .then( res => {
+            res.data.sort((a, b) => {if(b.severity === "high") return 1});
+            let severeInteractions = res.data.filter(x => x.severity === "high");
+            this.setState({
+                interactions: res.data,
+                severeInter: severeInteractions
+            });
         })
         .catch( error=> {
           this.props.history.push('/');
@@ -69,7 +60,23 @@ class Interactions extends Component {
                     </div>
                     {/* <Interactionlegend inter={this.state.interactions}/> */}
                 </div>
-                {interactions}
+                {
+                    this.state.severeInter && this.state.severeInter.length > 0 &&
+                    <div className="column y-center text-center">
+                        <h1 className="inter-warning">( {this.state.severeInter.length} ) Severe Interactions Detected</h1>
+                        <p>If you are prescribed the medications causing this reaction, please be sure to discuss this combination with your doctor</p>
+                    </div>
+                }
+                {
+                    this.state.interactions.length > 0 ?
+                        <div>
+                            <h1 className="text-center">( {this.state.interactions.length} ) Total Interactions Detected</h1> 
+                            {interactions} 
+                        </div> :
+                        <div className="column y-center">
+                            <h1>No Interactions Found!</h1>
+                        </div>
+                }
                 
             </div>
         )

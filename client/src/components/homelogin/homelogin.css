@@ -1,3 +1,8 @@
+/* .homelogin {
+    max-width: 1000px;
+    margin: 40px auto;
+} */
+
 .home-jumbotron {
     height: 50vw;
     width: 100%;
@@ -11,4 +16,53 @@
     font-family: 'Arbutus Slab', cursive;
     font-size: 6vw;
     margin: 4vw;
+    text-shadow: var(--pdarkgrey) 1px 2px;
+}
+
+.home-jumbo-msg1 {
+    align-self: center;
+}
+
+.home-jumbo-msg3 {
+    align-self: flex-end;
+}
+
+.home-welcome {
+    width: 100%;
+    height: 100px;
+    background-color: var(--plightgrey);
+    text-align: center;
+}
+
+.home-welcome-brand {
+    font-family: 'Arbutus Slab', cursive;
+    color: var(--plavender);
+    white-space: nowrap;
+}
+
+.home-main-row {
+    width: 40%;
+    min-width: 280px;
+    margin: 30px 20px 20px;
+}
+
+.home-main-row-login h4{
+    text-align: center;
+}
+
+.home-main-row-loglink {
+    color: var(--pblue);
+}
+
+.home-main-row-loginbtn {
+    background-color: var(--pred);
+    border-radius: 4px;
+    padding: 10px;
+    color: var(--pwhite);
+}
+
+@media screen and (max-width: 650px) {
+    .home-main-row:first-child {
+        order: 2;
+    }
 }

@@ -41,6 +41,10 @@ a {
   top: 0;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* CUSTOM */
 
 .div-to-btn {

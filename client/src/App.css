@@ -7,6 +7,7 @@
   --plavender: #BF9BDE;
   --pgreen: #CFE89C;
   --pwhite: #fcfcfc;
+  --pred: #c7412d;
 /* example how to reference:
   background-color: var(--pgreen) */
 }
@@ -28,29 +29,9 @@ a:hover {
   cursor: pointer;
 }
 
-.meddetaildrugtitle{
-  color: var(--pdarkgrey);
-}
-
-.meddetailitem{
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-bottom: 10px;
-  padding: 20px;
-}
-
-.meddetailitemtitle{
+/* #newmedlabel{
   color: var(--plavender);
-}
-
-.meddetailitemtext{
-  color: var(--vdarkgrey)
-}
-
-
-#newmedlabel{
-  color: var(--plavender);
-}
+} */
 
 
 

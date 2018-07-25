@@ -14,7 +14,7 @@ class Header extends Component {
                 </Link>
                 {
                     this.props.isAuth &&
-                    <div className="row">
+                    <div className="row x-center">
                         <span className="app-header-email">
                             Welcome, {this.props.email}! 
                         </span>

@@ -13,7 +13,6 @@ class Intermedlist extends Component {
         $.get('/api/allMeds')
         .then( res=> {
             this.setState({meds: res.data});
-            console.log (res)
         })
         .catch( error=> {
             this.props.history.push('/');

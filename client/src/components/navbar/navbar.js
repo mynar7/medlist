@@ -7,8 +7,8 @@ class Navbar extends Component {
     render() {
 
     return(
-        <div className="navbar">
-        
+        <div className="navbar row split">
+        <div className="row split navbar-twobtn-grp">
         <Link to={"/medlistcontainer/"}>
             <div className='navbutton'>
                 <i className="fas fa-prescription-bottle-alt"></i>
@@ -21,6 +21,8 @@ class Navbar extends Component {
                 <b>New Med</b>
             </div>
         </Link>
+        </div>
+        <div className="row split navbar-twobtn-grp">
         <Link to={"/interactionsview/"}>
             <div className='navbutton'>
                 <i className="fas fa-sync-alt"></i>
@@ -34,7 +36,7 @@ class Navbar extends Component {
                 <b>Schedule</b>
             </div>
         </Link>
-        
+        </div>        
         </div>
     )
 
