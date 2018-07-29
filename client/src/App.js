@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Switch} from 'react-router-dom';
+import { Route, withRouter, Switch, matchPath} from 'react-router-dom';
 import $ from "axios";
 import Medlistcontainer from './components/medlistcontainer'
 import Meddetail from './components/meddetail';
@@ -10,8 +10,9 @@ import Schedule from './components/schedule';
 import Homelogin from './components/homelogin';
 import Appfooter from './components/appfooter';
 import Settings from './components/settings';
+import Header from './components/header';
+import Qrlist from './components/qrlist';
 import './App.css';
-import Header from './components/header'
 
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
         email={this.state.email}/> 
         {this.state.isAuth && this.props.history.location.pathname !== '/' &&
         this.props.history.location.pathname !== '/settings' &&
+        !matchPath(this.props.history.location.pathname, {path: "/open/list/:userId", exact: true, strict: false}) &&
         <Navbar />} 
         <Switch>
           <Route path = "/" 
@@ -59,7 +61,7 @@ class App extends Component {
           <Route path = "/search" component={MedSearch} exact />
           <Route path="/settings" render={props => <Settings {...props} userId={this.state.userId} isAuth={this.state.isAuth}/>} 
             exact/>
-          {/* <Route path="open/:userId" component={} exact/> */}
+          <Route path="/open/list/:userId" component={Qrlist} exact/>
         </Switch>
         <Appfooter/>
       </div>

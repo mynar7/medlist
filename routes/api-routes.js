@@ -31,7 +31,7 @@ router.get('/rxnorms/:meds', (req, res) => {
 });
 
 //open route for QRCode functionality
-router.get('/list/:userId', checkAuth, (req, res) => {
+router.get('/open/list/:userId', (req, res) => {
     db.Med.findAll({
             where: {
                 UserId: req.params.userId,
@@ -326,10 +326,16 @@ router.put('/dose/:doseId', checkAuth, (req, res) => {
         .catch(err => res.json(err));
 })
 
-router.get("/qrcode", checkAuth, (req, res) => {
-    var code = qr.image(`http://my-med-list.herokuapp.com/open/${req.user.id}`, { type: 'png' });
-    res.type('png');
-    code.pipe(res);
+router.get("/qrcode/:type", checkAuth, (req, res) => {
+    if(req.params.type === "svg") {
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/${req.user.id}`, { type: 'svg' });
+        res.type('svg');
+        code.pipe(res);
+    } else {
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/${req.user.id}`, { type: 'png' });
+        res.type('png');
+        code.pipe(res);
+    }
 })
 
 module.exports = router;

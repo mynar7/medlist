@@ -1,0 +1,16 @@
+.qrlist-col {
+    width: 30vw;
+    min-width: 300px;
+}
+
+.qr-list-row {
+    margin: 10px 0;
+}
+
+.qrlist-note {
+    text-indent: 20px;
+}
+
+.qrlist-dose-col {
+    margin: 0 0 5px 0;
+}
