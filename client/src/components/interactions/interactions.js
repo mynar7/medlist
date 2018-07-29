@@ -13,10 +13,10 @@ class Interactions extends Component {
     componentDidMount() {
         $.get('/api/interactions')
         .then( res => {
-            res.data.sort((a, b) => {if(b.severity === "high") return 1});
+            let sortedResults = res.data.sort((a, b) => {if(b.severity === "high") return 1});//$%$let sortedResults =
             let severeInteractions = res.data.filter(x => x.severity === "high");
             this.setState({
-                interactions: res.data,
+                interactions: sortedResults, //res.data $%$
                 severeInter: severeInteractions
             });
         })
