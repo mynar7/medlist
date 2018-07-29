@@ -13,7 +13,7 @@ class Settings extends Component {
     }
 
     makeQR = () => {
-        return <QRCode value={`http://my-med-list.herokuapp.com/open/${this.props.userId}`} style={{width: "128px"}} />
+        return <QRCode value={`http://my-med-list.herokuapp.com/open/list/${this.props.userId}`} style={{width: "128px"}} />
     }
 
     render() {
@@ -28,9 +28,11 @@ class Settings extends Component {
                 </div>
 
                 <div className="column y-center">
-                    <h2 className="settings-label">QR Code</h2>
+                    
                     <div className="row split">
-                        <div className="settings-col"></div>
+                        <div className="settings-col">
+                            <h2 className="settings-label text-center">QR Code</h2>
+                        </div>
                         <div className="settings-col column y-center">
                             <p>Click to Download your list QR Code</p>
                             {this.makeQR()}

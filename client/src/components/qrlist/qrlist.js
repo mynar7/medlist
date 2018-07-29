@@ -19,7 +19,8 @@ class Qrlist extends Component {
 
     render() {
         return (
-            <div className="column">
+            <div className="column y-center">
+                <h1>Scanned Med List:</h1>
                 {
                     this.state.meds.length > 0 &&
                     this.state.meds.map((x, i) => {

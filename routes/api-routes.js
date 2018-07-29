@@ -328,11 +328,11 @@ router.put('/dose/:doseId', checkAuth, (req, res) => {
 
 router.get("/qrcode/:type", checkAuth, (req, res) => {
     if(req.params.type === "svg") {
-        var code = qr.image(`http://my-med-list.herokuapp.com/open/${req.user.id}`, { type: 'svg' });
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/list/${req.user.id}`, { type: 'svg' });
         res.type('svg');
         code.pipe(res);
     } else {
-        var code = qr.image(`http://my-med-list.herokuapp.com/open/${req.user.id}`, { type: 'png' });
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/list/${req.user.id}`, { type: 'png' });
         res.type('png');
         code.pipe(res);
     }
