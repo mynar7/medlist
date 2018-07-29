@@ -1,0 +1,14 @@
+.settings-col {
+    width: 30vw;
+    min-width: 300px;
+}
+
+.settings-label {
+    align-self: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+    .settings-label {
+        align-self: center;
+    }
+}

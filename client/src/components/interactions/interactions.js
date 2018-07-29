@@ -13,10 +13,10 @@ class Interactions extends Component {
     componentDidMount() {
         $.get('/api/interactions')
         .then( res => {
-            res.data.sort((a, b) => {if(b.severity === "high") return 1});
+            let sortedData = res.data.sort((a, b) => b.severity === "high" ? 1 : -1);
             let severeInteractions = res.data.filter(x => x.severity === "high");
             this.setState({
-                interactions: res.data,
+                interactions: sortedData,
                 severeInter: severeInteractions
             });
         })
@@ -30,7 +30,7 @@ class Interactions extends Component {
             return({backgroundColor: 'red', color: 'white'})
         }
         else if (severity === "N/A"){
-            return({backgroundColor: 'green', color: 'white'})
+            return({backgroundColor: 'blue', color: 'white'})
         }else{
             return({backgroundColor: 'yellow', color: 'black'})
         }
@@ -44,7 +44,7 @@ class Interactions extends Component {
             let drugnames = inter.source.map((med, index) =>{
             return(<span key={index}> {med.minConceptItem.name}{index===0 && <i className="fas fa-exchange-alt"></i>} </span>)
             })
-            return (<div className="interactionunit" key={index}><div className="tab row x-center y-center">{drugnames}</div><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" >!</div>{inter.description} </div></div>)
+            return (<div className="interactionunit" key={index}><div className="tab row x-center y-center">{drugnames}</div><div className='interaction'><div style={this.dotStyle(inter.severity)}className="dot" ><b>!</b></div>{inter.description} </div></div>)
             })
         }
         return(
@@ -63,14 +63,15 @@ class Interactions extends Component {
                 {
                     this.state.severeInter && this.state.severeInter.length > 0 &&
                     <div className="column y-center text-center">
-                        <h1 className="inter-warning">( {this.state.severeInter.length} ) Severe Interactions Detected</h1>
+                        <h1 className="inter-warning">( {this.state.severeInter.length} ) Severe Interaction{this.state.severeInter.length > 1 && "s"} Detected</h1>
                         <p>If you are prescribed the medications causing this reaction, please be sure to discuss this combination with your doctor</p>
                     </div>
                 }
                 {
                     this.state.interactions.length > 0 ?
                         <div>
-                            <h1 className="text-center">( {this.state.interactions.length} ) Total Interactions Detected</h1> 
+                            <h1 className="text-center">( {this.state.interactions.length} ) Total Interaction{this.state.interactions.length > 1 && "s"} Detected</h1> 
+                            <p className="text-center">Please discuss these interactions with your doctor before adjusting your medication regimen.</p>
                             {interactions} 
                         </div> :
                         <div className="column y-center">

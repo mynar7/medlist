@@ -23,7 +23,7 @@
   .interaction{
     background-color: white;
     border-style: solid;
-    border-width: 1;
+    border-width: 4px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
