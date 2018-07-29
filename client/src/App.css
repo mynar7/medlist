@@ -16,10 +16,6 @@ input, textarea, select, option {
   background-color: var(--pwhite);
 }
 
-hr {
-  color: yellow;
-}
-
 i {
   font-size: 1.2em;
   margin: 0 5px;
