@@ -13,6 +13,7 @@ class Interactions extends Component {
     componentDidMount() {
         $.get('/api/interactions')
         .then( res => {
+            if(this.unmounted) return;
             let sortedData = res.data.sort((a, b) => b.severity === "high" ? 1 : -1);
             let severeInteractions = res.data.filter(x => x.severity === "high");
             this.setState({
@@ -23,6 +24,10 @@ class Interactions extends Component {
         .catch( error=> {
           this.props.history.push('/');
         });
+    }
+
+    componentWillUnmount(){
+        this.unmounted = true;
     }
 
     dotStyle = function(severity){

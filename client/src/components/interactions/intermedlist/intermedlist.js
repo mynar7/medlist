@@ -12,13 +12,18 @@ class Intermedlist extends Component {
     componentDidMount() {
         $.get('/api/allMeds')
         .then( res=> {
+            if(this.unmounted) return;
             this.setState({meds: res.data});
         })
         .catch( error=> {
             this.props.history.push('/');
         });
-     };
+    };
 
+    componentWillUnmount(){
+        this.unmounted = true;
+    }
+    
     render() {
         let meds;
         if (this.state.meds.length > 0 ){ 

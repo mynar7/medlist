@@ -1,6 +1,11 @@
 .qrlist-col {
     width: 30vw;
     min-width: 300px;
+    margin-left: 15px;
+}
+
+.qrlist-col:nth-child(2) {
+    width: 20vw;
 }
 
 .qr-list-row {
@@ -13,4 +18,8 @@
 
 .qrlist-dose-col {
     margin: 0 0 5px 0;
+}
+
+.qrlist-item>hr {
+    width: 100%;
 }

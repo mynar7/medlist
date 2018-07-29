@@ -29,6 +29,10 @@ a:hover {
   cursor: pointer;
 }
 
+hr {
+  border-style: solid;
+  border-color: var(--plightgrey);
+}
 /* #newmedlabel{
   color: var(--plavender);
 } */

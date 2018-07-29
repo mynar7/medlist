@@ -19,6 +19,7 @@ class Meddetail extends Component {
         window.scrollTo(0, 0);
         $.get(`/api/doses/${this.props.match.params.medId}`)
             .then(res => {
+                if(this.unmounted) return;
                 this.setState({
                     doses: res.data
                 })
@@ -28,6 +29,7 @@ class Meddetail extends Component {
 
         $.get(`/api/medInfo/${this.props.match.params.FDAId}`)
             .then( res=> {
+                if(this.unmounted) return;
                 this.setState({
                     medInfo: Object.entries(res.data)
                 });
@@ -35,6 +37,10 @@ class Meddetail extends Component {
             .catch( error=> {
             console.log(error);
             });       
+    }
+
+    componentWillUnmount(){
+        this.unmounted = true;
     }
 
     updateDoses = () => {
