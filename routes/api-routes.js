@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const pharma = require('../controls/pharma');
 const db = require('../models');
+const qr = require("qr-image");
 
 //middleware for protecting routes
 function checkAuth(req, res, next) {
@@ -13,18 +14,11 @@ function checkAuth(req, res, next) {
     }
 }
 
-
 //test route: check auth
+//client uses this to check login status, don't delete
 router.get('/test', checkAuth, (req, res) => {
     res.json(req.user);
 })
-
-//test route: get rxnorm id 
-router.get('/rxnorm/:med', (req, res) => {
-    pharma.getRxNorm(req.params.med)
-        .then(result => res.json(result))
-        .catch(err => res.json(err));
-});
 
 //test route: give meds as /rxnorms/med1+med2+med3 and get reactions back in array
 router.get('/rxnorms/:meds', (req, res) => {
@@ -33,6 +27,25 @@ router.get('/rxnorms/:meds', (req, res) => {
         //debug .then to give interactions off of rxnorm_ids
         .then(result => pharma.getInteractions(result.map(x => x.rxnorm_id)))
         .then(result => res.json(result))
+        .catch(err => res.json(err));
+});
+
+//open route for QRCode functionality
+router.get('/open/list/:userId', (req, res) => {
+    db.Med.findAll({
+            where: {
+                UserId: req.params.userId,
+            },
+            include: [{
+                    model: db.Substance,
+                    as: "substances"
+                },
+                {
+                    model: db.Dose_Time,
+                    as: "dose_times"
+                }
+            ]
+        }).then(results => res.json(results))
         .catch(err => res.json(err));
 });
 
@@ -150,7 +163,6 @@ router.get('/interactions', checkAuth, (req, res) => {
                 UserId: req.user.id,
             }
         }).then(results => {
-            console.log(results.length);
             let rxnorm_ids = results.map(substance => substance.rxnorm_id);
             return pharma.getInteractions(rxnorm_ids);
         }).then(results => res.json(results))
@@ -312,6 +324,18 @@ router.put('/dose/:doseId', checkAuth, (req, res) => {
         })
         .then(result => res.json(result))
         .catch(err => res.json(err));
+})
+
+router.get("/qrcode/:type", checkAuth, (req, res) => {
+    if(req.params.type === "svg") {
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/list/${req.user.id}`, { type: 'svg' });
+        res.type('svg');
+        code.pipe(res);
+    } else {
+        var code = qr.image(`http://my-med-list.herokuapp.com/open/list/${req.user.id}`, { type: 'png' });
+        res.type('png');
+        code.pipe(res);
+    }
 })
 
 module.exports = router;

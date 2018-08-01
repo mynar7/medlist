@@ -1,15 +1,4 @@
-// const router = require('express').Router(); //*******************************
-// const app = express(); //***********************************
 const $ = require('axios');
-const db = require('../models');
-// const drugNoInter = [8591, 151827, 6809, 221124];
-// const drugInter = ["207106", "152923", "656659"]
-// const leetest = [196503,202813]
-// const leetest2 = [11289,17472]
-// const leetest3 = [11289,32968,704,36437]
-// Test calls ******************
-//   ge/tDrugValue('sertraline')
-//getInteractions(drugInter).then((results) => console.log(results));
 
 // this checks for the drug name (including generic names) and retrieves rxNumber 
 // - if it doesn't exist in the database, it throws an error
@@ -60,11 +49,12 @@ pharma = {
             .then(res => {
                 let interactionsObj = [];
                 if (res.data.fullInteractionTypeGroup) {
-                    console.log(res.data.fullInteractionTypeGroup[0].fullInteractionType[0].interactionPair[0])
+                    // console.log(res.data.fullInteractionTypeGroup[0].fullInteractionType[0].interactionPair[0])
                     for (var i = 0; i < res.data.fullInteractionTypeGroup.length; i++) {
                         for (var j = 0; j < res.data.fullInteractionTypeGroup[i].fullInteractionType.length; j++) {
                             for (var k = 0; k < res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair.length; k++) {
-                                let found = interactionsObj.find(x => x.description === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description );
+                                let found = interactionsObj.find(x => x.description === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description &&
+                                x.source === res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].interactionConcept);
                                 if(!found) {
                                     // ********************************************
 
@@ -72,8 +62,8 @@ pharma = {
                                     interactionsObj.push({"description": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].description,
                                     "severity": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].severity,
                                     "source": res.data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[k].interactionConcept
-                                })
-
+                                    })
+                                    //console.log(interactionsObj[interactionsObj.length - 1])
                                 }
                             }
                         }

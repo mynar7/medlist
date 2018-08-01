@@ -1,0 +1,22 @@
+.settings-col {
+    width: 35vw;
+    min-width: 300px;
+}
+
+.settings-label {
+    align-self: flex-start;
+    margin: 10px 0 5px;
+}
+.settings-dl-btns {
+    margin: 10px 0;
+    width: 320px;
+}
+
+.settings-dl-btns>a {
+    margin: 2px;
+}
+@media screen and (max-width: 600px) {
+    .settings-label {
+        align-self: center;
+    }
+}
