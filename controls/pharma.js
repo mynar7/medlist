@@ -1,5 +1,11 @@
 const $ = require('axios');
 
+// turn off SSL enforcement hack for FDA's expired cert
+const https = require('https');
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 // this checks for the drug name (including generic names) and retrieves rxNumber 
 // - if it doesn't exist in the database, it throws an error
 pharma = {
@@ -85,7 +91,7 @@ pharma = {
         term = termArr.join('+');
         let queryURL = `https://api.fda.gov/drug/label.json?search=openfda.generic_name:"${term}"+openfda.brand_name:"${term}"&limit=10`;
         return new Promise((resolve, reject) => {
-            $.get(queryURL)
+            $.get(queryURL, {httpsAgent})
             .then(res => {
                 let nameSearchArr = res.data.results.reduce((newArr, item) => {
                     let dosage;
@@ -121,7 +127,7 @@ pharma = {
     getFDADetails: function(fdaID) {
         const queryString = `https://api.fda.gov/drug/label.json?search=id:${fdaID}`;
         return new Promise((resolve, reject) => {
-            $.get(queryString)
+            $.get(queryString, {httpsAgent})
             .then(res => resolve(res.data.results[0]))
             .catch(err =>{ reject({Error: "Details not found"})})
             })
@@ -130,7 +136,7 @@ pharma = {
     getFDAinfo: function(fdaID) {
         const queryURL = `https://api.fda.gov/drug/label.json?search=id:${fdaID}`;
         return new Promise((resolve, reject) => {
-            $.get(queryURL)
+            $.get(queryURL, {httpsAgent})
             .then(res => {
                 // console.log(res.data)
                 const { 
