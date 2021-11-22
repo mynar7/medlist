@@ -138,7 +138,6 @@ pharma = {
         return new Promise((resolve, reject) => {
             $.get(queryURL, {httpsAgent})
             .then(res => {
-                // console.log(res.data)
                 const { 
                     indications_and_usage,
                     dosage_forms_and_strengths,
@@ -163,6 +162,6 @@ pharma = {
         });
     }
 
-}//end obj
+}
 
 module.exports = pharma;
