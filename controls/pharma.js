@@ -12,7 +12,7 @@ module.exports = {
     getRxNorm: function (name) {
         return new Promise((resolve, reject) => {
             const baseURL = 'https://rxnav.nlm.nih.gov/REST/rxcui.json?name='
-            $.get(baseURL + name)
+            $.get(baseURL + name, {httpsAgent})
             .then(res => {
                 let drugValue;
                 if(res.data.idGroup.rxnormId) {
@@ -44,7 +44,7 @@ module.exports = {
     //A maximum of 50 identifiers is allowed
     getInteractions: async function (rxcuis) {
         const url = 'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis='
-        const response = await $.get(url + rxcuis.join('+'))
+        const response = await $.get(url + rxcuis.join('+'), {httpsAgent})
         const {fullInteractionTypeGroup} = response.data
         if (!fullInteractionTypeGroup || !fullInteractionTypeGroup.length)
             return []
