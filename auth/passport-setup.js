@@ -2,17 +2,18 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const db = require('../models');
 
-passport.use( 
+passport.use(
     new GoogleStrategy(
         {
             //options
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: 'https://my-med-list.herokuapp.com/auth/google/redirect'
+            // callbackURL: '/auth/google/redirect'
         },
         (accessToken, refreshToken, profile, done) => {
             //console.log(profile);
-            
+
             db.User.findOrCreate(
                 {
                     where: {
@@ -27,8 +28,8 @@ passport.use(
 
                 done(null, user);
             });
-            
-           
+
+
         }
     )
 );

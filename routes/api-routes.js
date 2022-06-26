@@ -67,8 +67,6 @@ router.get('/medInfo/:FDAId', (req, res) => {
 
 
 //find med in FDA db
-
-// ADD BACK IN CHECKAUTH
 router.get('/searchMed/:med', checkAuth, (req, res) => {
     pharma.searchFDA(req.params.med)
         .then(result => res.json(result))
@@ -157,19 +155,25 @@ router.get('/allMeds/more', checkAuth, (req, res) => {
 
 //get interactions
 
-router.get('/interactions', checkAuth, (req, res) => {
-    db.Substance.findAll({
+router.get('/interactions', checkAuth, async (req, res) => {
+    try {
+        const substances = await db.Substance.findAll({
             where: {
                 UserId: req.user.id,
             }
-        }).then(results => {
-            let rxnorm_ids = results.map(substance => substance.rxnorm_id);
-            return pharma.getInteractions(rxnorm_ids);
-        }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        })
+        if (!substances || substances.length === 0)
+            return res.json([])
+        const rxnorm_ids = substances.map(substance => substance.rxnorm_id);
+        const interactions = await pharma.getInteractions(rxnorm_ids);
+        res.json(interactions)
+    } catch(err) {
+        console.log(err)
+        res.status(500).send(err)
+    }
 });
 
-//add a med 
+//add a med
 router.post('/addMed', checkAuth, (req, res) => {
     let substances = req.body.substance;
     Promise.all([
@@ -202,7 +206,7 @@ router.post('/addMed', checkAuth, (req, res) => {
             return new Promise((resolve, reject) => {
                 db.Substance.bulkCreate(bulkSubstances)
                     //"[result[1], result2]" gives "[added med from previous insert, [ added substances] ]"
-                    //back to client in json. 
+                    //back to client in json.
                     .then(result2 => resolve([result[1], result2]))
                     .catch(err => reject(err));
             });
@@ -233,7 +237,7 @@ router.get('/doses/:medId', checkAuth, (req, res) => {
 //add a dosage and time to administer
 router.post('/addDose/:medId', (req, res) => {
     db.Dose_Time.create({
-            UserId: req.user.id,        
+            UserId: req.user.id,
             MedId: req.params.medId,
             time: req.body.time,
             dose: req.body.dose,
