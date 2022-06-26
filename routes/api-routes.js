@@ -27,7 +27,7 @@ router.get('/rxnorms/:meds', (req, res) => {
         //debug .then to give interactions off of rxnorm_ids
         .then(result => pharma.getInteractions(result.map(x => x.rxnorm_id)))
         .then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //open route for QRCode functionality
@@ -46,7 +46,7 @@ router.get('/open/list/:userId', (req, res) => {
                 }
             ]
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 router.get('/infomed/:med', (req, res) => {
@@ -56,21 +56,24 @@ router.get('/infomed/:med', (req, res) => {
             return pharma.getFDAinfo(result[0].openfda_id);
         })
         .then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 })
 
 router.get('/medInfo/:FDAId', (req, res) => {
     pharma.getFDAinfo(req.params.FDAId)
         .then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.status(500).json({err}));
 });
 
 
 //find med in FDA db
-router.get('/searchMed/:med', checkAuth, (req, res) => {
-    pharma.searchFDA(req.params.med)
-        .then(result => res.json(result))
-        .catch(err => res.json(err));
+router.get('/searchMed/:med', checkAuth, async (req, res) => {
+    try {
+        const result = await pharma.searchFDA(req.params.med)
+        res.json(result)
+    } catch(err) {
+        res.status(500).send('Error retrieving med')
+    }
 });
 
 //delete user
@@ -81,7 +84,7 @@ router.delete('/removeuser', checkAuth, (req, res) => {
             }
         })
         .then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 })
 
 //get one med
@@ -104,7 +107,7 @@ router.get('/med/:medId', checkAuth, (req, res) => {
                 }
             ]
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //delete one med
@@ -116,7 +119,7 @@ router.delete('/med/:medId', checkAuth, (req, res) => {
                 id: req.params.medId
             }
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 
@@ -128,7 +131,7 @@ router.get('/allMeds', checkAuth, (req, res) => {
                 UserId: req.user.id,
             }
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //get all user's meds
@@ -150,7 +153,7 @@ router.get('/allMeds/more', checkAuth, (req, res) => {
                 }
             ]
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //get interactions
@@ -169,7 +172,7 @@ router.get('/interactions', checkAuth, async (req, res) => {
         res.json(interactions)
     } catch(err) {
         console.log(err)
-        res.status(500).send(err)
+        res.status(500).json({err})
     }
 });
 
@@ -211,7 +214,7 @@ router.post('/addMed', checkAuth, (req, res) => {
                     .catch(err => reject(err));
             });
         }).then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //get doses
@@ -230,7 +233,7 @@ router.get('/doses/:medId', checkAuth, (req, res) => {
         })
         res.json(sortedResults)
     })
-    .catch(err => res.json(err));
+    .catch(err => res.json({err}));
 });
 
 
@@ -243,7 +246,7 @@ router.post('/addDose/:medId', (req, res) => {
             dose: req.body.dose,
             note: req.body.note
         }).then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //delete one dose/time
@@ -255,7 +258,7 @@ router.delete('/dose/:doseId', checkAuth, (req, res) => {
                 id: req.params.doseId
             }
         }).then(results => res.json(results))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //get a schedule
@@ -310,7 +313,7 @@ router.get('/schedule', checkAuth, (req, res) => {
             });
             res.json(groupedByTime);
         })
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 });
 
 //get a schedule
@@ -327,7 +330,7 @@ router.put('/dose/:doseId', checkAuth, (req, res) => {
             }
         })
         .then(result => res.json(result))
-        .catch(err => res.json(err));
+        .catch(err => res.json({err}));
 })
 
 router.get("/qrcode/:type", checkAuth, (req, res) => {
